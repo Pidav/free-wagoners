@@ -1,4 +1,13 @@
 
     <h1>Coder index</h1>
 
+    <ul>
+      <% @coders.each do |coder| %>
+        <li><%= coder.name %>
+             <p><%= coder.description %></p>
+        </li>
+
+      <% end %>
+    </ul>
+
 
