@@ -19,18 +19,21 @@
 <% end %>
 
 
-<div class="container">
-  <div class="row">
+
+  <div class="cards">
     <% @coders.each do |coder| %>
-      <div class="col-12 col-md-6 col-lg-3">
-        <% if coder.photo? %>
-          <% background_url = cl_image_path coder.photo, width: 400, height: 500, crop: :fill %>
-        <%else %>
+      <div >
+
+          <% #background_url = cl_image_path coder.photo, width: 400, height: 500, crop: :fill %>
+
           <%background_url = 'https://unsplash.com/collections/1245570/face' %>
-        <% end %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= background_url %>');">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= 'https://unsplash.com/collections/1245570/face' %>');">
           <div class="card-description">
-            <h2><%= coder.name %></h2>
+            <h2>Name: <%= coder.name %></h2>
+              <br>
+            <p1>Description: <%= coder.description %></P1>
+              <br>
+            <P2>Price = <%= coder.price_per_day %> Euros</P2>
           </div>
           <%= link_to "", coder_path(coder), class: 'card-link' %>
         </div>
@@ -38,3 +41,6 @@
     <% end %>
   </div>
 </div>
+
+
+
