@@ -41,28 +41,35 @@ def coder_creation(user)
   return new_coder
 end
 
-15.times do
-  new_user = user_creation
-  new_coder = coder_creation(new_user)
-
-  4.times do
-    duration = ((rand() * 10).round * 7) + 1
-    valid = (rand() > 0.5)
-    date_start = Date.new(2020,6+(rand()*6).round,rand()*28.round+1)
-    date_end = date_start + duration
-    unless (date_start.nil? || date_end.nil?)
+def mission_creation(coder)
+  duration = ((rand() * 10).round * 7) + 1
+  valid = (rand() > 0.5)
+  date_start = Date.new(2020,6+(rand()*6).round,rand()*28.round+1)
+  date_end = date_start + duration
+  unless (date_start.nil? || date_end.nil?)
     new_mission = Mission.new(
       start_date: date_start,
       end_date: date_end + duration,
       total_price: ((rand()*9).round + 1 * 100) * duration,
-      validated_mission: valid
+      validated_mission: valid,
+      title: Faker::Company.bs,
+      description: Faker::Lorem.sentence(word_count: 5 + rand() * 10 )
       )
-    new_mission.coder = new_coder
-    new_user_for_mission = user_creation
-    new_mission.user = new_user_for_mission
-    # p new_mission
-    new_mission.save
-    end
+    new_mission.coder = coder
+    new_mission.user = user_creation
   end
+  if !new_mission.save
+    puts "erreur mission"
+    p new_mission
+  else
+    return new_mission
+  end
+end
 
+15.times do
+  new_user = user_creation
+  new_coder = coder_creation(new_user)
+  4.times do
+    mission_creation(new_coder)
+  end
 end
