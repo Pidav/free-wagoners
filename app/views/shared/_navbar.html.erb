@@ -11,7 +11,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li> <%= current_user.email %> </li>
+        <li class="nav-item active m-0">
+          <%= current_user.email %>
+        </li>
       <% end %>
 
       <li class="nav-item active">
