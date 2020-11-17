@@ -13,4 +13,37 @@
       <% end %>
     </ul>
 
+<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <div class="search-form-control form-group">
+    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i> Search
+    </button>
+    <%= check_box_tag(:tag_1) %>
+    <%= label_tag(:tag_1, "I master 1") %>
+    <%= check_box_tag(:tag_2) %>
+    <%= label_tag(:tag_2, "I mster 2") %>
 
+  </div>
+<% end %>
+
+
+<div class="container">
+  <div class="row">
+    <% @coders.each do |coder| %>
+      <div class="col-12 col-md-6 col-lg-3">
+        <% if coder.photo? %>
+          <% background_url = cl_image_path coder.photo, width: 400, height: 500, crop: :fill %>
+        <% else %>
+          <% background_url = 'https://unsplash.com/collections/1245570/face' %>
+        <% end %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= background_url %>');">
+          <div class="card-description">
+            <h2><%= coder.name %></h2>
+          </div>
+          <%= link_to "", coder_path(coder), class: 'card-link' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
