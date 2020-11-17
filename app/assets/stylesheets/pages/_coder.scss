@@ -1,0 +1,34 @@
+.container {
+  width: 1200px;
+  margin: 0px auto;
+}
+
+.coder-stats-box {
+  flex-grow: 1;
+  border: 1px red solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.coder-top {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.picture-box {
+  align-items: center;
+}
+
+.coder-picture {
+  background-size: cover;
+}
+
+.missions-list {
+  padding-left: 0;
+  list-style: none;
+}
+.coder-missions-box {
+  background-color: white;
+}
