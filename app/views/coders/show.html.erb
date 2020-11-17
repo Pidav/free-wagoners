@@ -1,0 +1,14 @@
+    <h1>Coder show du <%= @coder.name %></h1>
+
+    <ul>
+      <% @coder.missions.each do |mission| %>
+        <li><p> du <%= mission.start_date %> au <%= mission.end_date %>
+             <span><%= mission.total_price %> €</span>
+             <br>
+             given by <%= mission.user.first_name %> <%= mission.user.last_name %></p>
+        </li>
+
+      <% end %>
+    </ul>
+
+    <%= link_to "Back to coders list", coders_path  %>
