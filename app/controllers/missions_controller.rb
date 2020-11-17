@@ -24,6 +24,6 @@ class MissionsController < ApplicationController
   private
 
   def coder_params
-    params.require(:mission).permit(:start_date, :end_date, :total_price, :validated_mission)
+    params.require(:mission).permit(:start_date, :end_date, :total_price, :validated_mission, :title, :description)
   end
 end
