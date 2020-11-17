@@ -2,7 +2,7 @@ class CodersController < ApplicationController
   before_action :set_coder, only: [:show, :edit, :update]
 
   def index
-    @coders = Coder.all
+    @coders = policy_scope(Coder.all)
   end
 
   def show
