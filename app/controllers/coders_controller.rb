@@ -10,10 +10,13 @@ class CodersController < ApplicationController
 
   def new
     @coder = Coder.new
+    authorize @coder
   end
 
   def create
     @coder = Coder.new(coder_params)
+    @user = User.find(params[:user_id])
+    @coder.user = @user
     authorize @coder
     if @coder.save
       redirect_to coder_path(@coder)
