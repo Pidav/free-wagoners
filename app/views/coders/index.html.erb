@@ -3,8 +3,11 @@
 
     <ul>
       <% @coders.each do |coder| %>
-        <li><%= coder.name %>
-             <p><%= coder.description %></p>
+        <li>
+          <%= link_to coder_path(coder) do %>
+          <%= coder.name %>
+          <% end %>
+          <p><%= coder.description %></p>
         </li>
 
       <% end %>
