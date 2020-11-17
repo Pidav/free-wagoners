@@ -22,15 +22,7 @@
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
-    <div class="footer">
-    <ul>
-      <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-      <li><a href="#" target="_blank"><i class="fab fa-github"></i></a></li>
-      <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-      <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-    </ul>
-    <p>This website was coded with 🍺 at Le Wagon.</p>
-</div>
+    <%= render "shared/footer" %>
 
   </body>
 </html>
