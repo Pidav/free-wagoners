@@ -35,7 +35,7 @@ class CodersController < ApplicationController
   private
 
   def coder_params
-    params.require(:coder).permit(:name, :price_per_day, :email, :phone_number, :description)
+    params.require(:coder).permit(:name, :price_per_day, :email, :phone_number, :description, :photo)
   end
 
   def set_coder
