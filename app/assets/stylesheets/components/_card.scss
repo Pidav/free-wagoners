@@ -28,6 +28,12 @@
   opacity: 0.1;
 }
 
+.mission-card {
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  padding: 1rem;
+  margin: 1rem 1rem;
+}
+
 .card-category {
   background-size: cover;
   background-position: center;
@@ -42,4 +48,3 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
-
