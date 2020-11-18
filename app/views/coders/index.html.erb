@@ -5,7 +5,7 @@
 <%= simple_form_for :search, url: root_path, method: :get do |f| %>
   <div class="search-form-control form-group">
     <input class="form-control string required" type="text" name="query" id="query" />
-    <button name="button" type="submit" class="btn btn-flat">
+    <button name="button" type="submit" class="btn btn-danger">
       <i class="fas fa-search"></i> Search
     </button>
     <div class=" tag">
@@ -34,7 +34,7 @@
     </div>
   </div>
   <div class="row">
-    <% @coders.each do |coder| %>
+    <% @coders.order(updated_at: :desc ).each do |coder| %>
       <div class="col-4">
         <div class="flat-card">
           <div class="flat-card-image" style="background-image: url('<%= "https://source.unsplash.com/random/600x400" %>)"></div>
