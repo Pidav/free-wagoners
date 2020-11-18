@@ -9,6 +9,8 @@
       </div>
       <div class="coder-short-desc p-3">
         <span><%= @coder.description.truncate(50) %></span>
+        <br>
+        <span><%= @coder.email %></span>
       </div>
       <div class="coder-stats p-3 d-flex justify-content-between">
         <div class="coder-stats-box d-flex justify-content-center align-items-center">
@@ -29,10 +31,15 @@
     </div>
   </div>
   <div class="row my-4">
+    <div class="col-12">
+      <p><%= @coder.description%></p>
+    </div>
+  </div>
+  <div class="row my-4">
     <div class="col-lg-10 col-offset-1 coder-missions-box">
       <h3 class="m-4">Mes missions :</h3>
       <ul class= "missions-list">
-        <% sorted_missions = @coder.missions.order(start_date: :desc) %>
+        <% sorted_missions = @coder.missions.where(validated_mission: true).order(start_date: :desc) %>
         <% sorted_missions.each do |mission| %>
           <li>
             <div class="mission-card">
@@ -44,14 +51,16 @@
               <div class="mission-long-desc">
                 <p><%= mission.description %></p>
               </div>
-              <hr class="m-1">
-              <div class="missions-confidentials-infos">
-                <span><%= mission.total_price %> €</span>
-                <span><%= mission.validated_mission %> €</span>
-                <span>given by <%= mission.user.first_name %> <%= mission.user.last_name %>
-                  from <%= mission.user.company_name %>
-                </span>
-              </div>
+              <% if mission.user = current_user %>
+                <hr class="m-1">
+                <div class="missions-confidentials-infos">
+                  <span><%= mission.total_price %> €</span>
+                  <span><%= mission.validated_mission %> €</span>
+                  <span>given by <%= mission.user.first_name %> <%= mission.user.last_name %>
+                    from <%= mission.user.company_name %>
+                  </span>
+                </div>
+              <% end %>
             </div>
           </li>
         <% end %>
