@@ -10,9 +10,11 @@
       <br>
       <div class="coder">
 
-        <a class="btn btn-danger" href="edit_coder_path" role="button">Editer mon profil</a>
-        <a class="btn btn-danger" href="#" role="button">Mes missions</a>
-        <a class="btn btn-danger" href="#" role="button">Demander une recommandation</a>
+
+        <%= link_to "Créer mon profil", new_user_coder_path(current_user), class: "btn btn-danger" %>
+        <%= link_to "Editer mon profil", edit_coder_path(current_user), class: "btn btn-danger" %>
+        <%= link_to "Mes missions", new_user_coder_path(current_user), class: "btn btn-danger" %>
+        <%= link_to "Demander une recommandation", new_user_coder_path(current_user), class: "btn btn-danger" %>
 
       </div>
 
