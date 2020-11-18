@@ -32,10 +32,9 @@
       <div class="coder">
 
 
-        <%= link_to "Créer mon profil", new_user_coder_path(current_user), class: "btn btn-danger" %>
-        <%= link_to "Editer mon profil", edit_coder_path(current_user), class: "btn btn-danger" %>
-        <%= link_to "Mes missions", new_user_coder_path(current_user), class: "btn btn-danger" %>
-        <%= link_to "Demander une recommandation", new_user_coder_path(current_user), class: "btn btn-danger" %>
+        <%= link_to "Créer un profil de codeur", new_user_coder_path(current_user), class: "btn btn-danger" %>
+        <%= link_to "Editer un profil de codeur", edit_coder_path(current_user.coders.first), class: "btn btn-danger" %>
+        <%= link_to "Les missions de mes codeurs", "#", class: "btn btn-danger" %>
 
       </div>
 
