@@ -21,6 +21,10 @@ class MissionsController < ApplicationController
     @mission = Mission.update(coder_params)
   end
 
+  # def show
+  #   @missions = Mission.find(params[:id])
+  # end
+
   private
 
   def coder_params
