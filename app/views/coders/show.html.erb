@@ -53,12 +53,12 @@
         <% sorted_missions.each do |mission| %>
           <li>
             <div class="mission-card">
-              <div class="mission-top d-flex justify-content-between align-items-center">
+              <div class="mission-top">
                 <h4><%= mission.title %></h4>
-                <span><%= mission.start_date %> au <%= mission.end_date %></span>
+                <span><i class="far fa-calendar-alt mr-2"></i>du <%= mission.start_date %> au <%= mission.end_date %></span>
               </div>
               <hr class="m-1">
-              <div class="mission-long-desc">
+              <div class="mission-long-desc mt-2">
                 <p><%= mission.description %></p>
               </div>
               <% if mission.user == current_user %>
