@@ -1,10 +1,9 @@
-
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <h2>Create your Coder</h2>
+      <h2>Edit your Coder</h2>
 
-      <%= simple_form_for [current_user, @coder] do |f| %>
+      <%= simple_form_for [@coder] do |f| %>
         <%= f.input :name %>
         <%= f.input :email %>
         <%= f.input :description %>
@@ -16,4 +15,3 @@
     </div>
   </div>
 <div>
-

@@ -23,11 +23,21 @@
     </div>
     <div class="col-lg-4 coder-top picture-box">
       <div class="coder-picture p-3 d-flex">
-        <%= image_tag "https://source.unsplash.com/random/400x400", height: 200, weight: 300, class: "profil-picture" %>
+        <% if @coder.photo.attached? %>
+          <%= cl_image_tag @coder.photo.key , height: 200, weight: 300, class: "profil-picture" %>
+        <% else %>
+          <%= image_tag "https://source.unsplash.com/random/400x400", height: 200, weight: 300, class: "profil-picture" %>
+        <% end %>
       </div>
-      <div class="btn btn-danger">
-        <%= link_to "book for a mission", "#" %>
-      </div>
+      <% if current_user == @coder.user %>
+        <div class="btn btn-danger">
+          <%= link_to "edit coder", edit_coder_path(@coder) %>
+        </div>
+      <% else %>
+        <div class="btn btn-danger">
+          <%= link_to "book for a mission", "#" %>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="row my-4">
@@ -51,7 +61,7 @@
               <div class="mission-long-desc">
                 <p><%= mission.description %></p>
               </div>
-              <% if mission.user = current_user %>
+              <% if mission.user == current_user %>
                 <hr class="m-1">
                 <div class="missions-confidentials-infos">
                   <span><%= mission.total_price %> €</span>

@@ -33,6 +33,7 @@ class CodersController < ApplicationController
 
   def update
     @coder = Coder.update(coder_params)
+    redirect_to coder_path(@coder)
   end
 
   def edit
