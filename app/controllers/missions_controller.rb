@@ -15,15 +15,14 @@ class MissionsController < ApplicationController
   def create
     @mission = Mission.new(coder_params)
     @coder = Coder.find(params[:coder_id])
-    @user = User.find(params[:user_id]) # current user
     @mission.coder = @coder
     duration = @mission.end_date - @mission.start_date
     @mission.total_price = duration * @coder.price_per_day
-    @mission.user = @user
+    @mission.user = current_user
     @mission.validated_mission = true
     authorize @mission
     if @mission.save
-      redirect_to "/dashboard"
+      redirect_to "/missions_recruteur"
     else
       render 'new'
     end

@@ -9,11 +9,13 @@ require 'faker'
 require 'date'
 
 def user_creation
+  user_first_name = Faker::Name.first_name
+  user_last_name = Faker::Name.unique.last_name
   new_user = User.new(
-  email: Faker::Internet.unique.free_email,
+  email: "#{user_first_name}.#{user_last_name}@#{Faker::Internet.domain_name}",
   password: "12345678",
-  first_name: Faker::Name.first_name,
-  last_name: Faker::Name.last_name,
+  first_name: user_first_name,
+  last_name: user_last_name,
   company_name: Faker::Company.name,
   description: Faker::Lorem.sentence(word_count: 15 + rand() * 20),
   phone_number: "+33 #{[1,6,7].sample}#{Faker::PhoneNumber.subscriber_number(length: 8)}"
@@ -26,10 +28,11 @@ def user_creation
 end
 
 def coder_creation(user)
+  coder_name = Faker::Name.unique.name
   new_coder = Coder.new(
-    name: Faker::Name.unique.name,
+    name: coder_name,
     price_per_day: ((rand() * 10).round + 1)  * 100,
-    email: Faker::Internet.unique.free_email,
+    email: Faker::Internet.unique.free_email(name: coder_name),
     description: Faker::Lorem.sentence(word_count: 25 + rand() * 20 ),
     phone_number: "+33 #{[1,6,7].sample}#{Faker::PhoneNumber.subscriber_number(length: 8)}",
     )
@@ -43,7 +46,7 @@ end
 
 def mission_creation(coder)
   duration = ((rand() * 10).round * 7) + 1
-  valid = (rand() > 0.5)
+  valid = (rand() > 0.25)
   date_start = Date.new(2020,6+(rand()*6).round,rand()*28.round+1)
   date_end = date_start + duration
   unless (date_start.nil? || date_end.nil?)
