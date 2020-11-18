@@ -14,9 +14,11 @@ class MissionsController < ApplicationController
     @mission = Mission.new(coder_params)
     @coder = Coder.find(params[:coder_id])
     @mission.coder = @coder
+    @mission.duration = @mission.end_date - @mission.start_date
+    @mission.total_price = @mission.duration * @coder.price_per_day
     authorize @coder
     if @mission.save
-      redirect_to mission_path(@mission)
+      redirect_to dashboard_path(current_user)
     else
       render 'new'
     end
