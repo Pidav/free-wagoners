@@ -5,16 +5,23 @@ class MissionsController < ApplicationController
 
   def new
     @mission = Mission.new
+    @coder = Coder.find(params[:coder_id])
+    @mission.coder = @coder
+    authorize @coder
   end
 
   def create
     @mission = Mission.new(coder_params)
+    @coder = Coder.find(params[:coder_id])
+    @mission.coder = @coder
+    authorize @coder
     if @mission.save
       redirect_to mission_path(@mission)
     else
       render 'new'
     end
   end
+
 
   def update
     @mission = Mission.find(params[:id])
