@@ -1,10 +1,10 @@
 
-    <h1>Les meilleurs talents du Wagon</h1>
+<h1 style="text-align: center">Les meilleurs talents du Wagon</h1>
 <h2>Trouvez votre expert parmi nos freelances</h2>
 
 <%= simple_form_for :search, url: root_path, method: :get do |f| %>
   <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+    <input class="form-control string required" type="text" name="query" id="query" />
     <button name="button" type="submit" class="btn btn-flat">
       <i class="fas fa-search"></i> Search
     </button>
@@ -19,28 +19,46 @@
 <% end %>
 
 
+ <div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+    </div>
+  </div>
 
-  <div class="cards">
+  <div class="row">
+    <div class="col">
+      <% if @query %>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @coders.count %> coders out of our <%= Coder.count %> on our website.</p>
+      <% else %>
+        <p>All <%= Coder.count %> coders.</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
     <% @coders.each do |coder| %>
-      <div >
-
-          <% #background_url = cl_image_path coder.photo, width: 400, height: 500, crop: :fill %>
-
-          <%background_url = 'https://unsplash.com/collections/1245570/face' %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= 'https://unsplash.com/collections/1245570/face' %>');">
-          <div class="card-description">
-            <h2>Name: <%= coder.name %></h2>
-              <br>
-            <p1>Description: <%= coder.description %></P1>
-              <br>
-            <P2>Price = <%= coder.price_per_day %> Euros</P2>
+      <div class="col-4">
+        <div class="flat-card">
+          <div class="flat-card-image" style="background-image: url('<%= "https://source.unsplash.com/random/600x400" %>)"></div>
+          <div class="flat-card-content">
+            <div class="flat-card-title">
+              <h4><%= coder.name %></h4>
+            </div>
+            <p><%= coder.description %></p>
+            <div class="flex">
+              <div class="flex ml-3">
+                <i class="material-icons mr-2">Price: </i><span><%= coder.price_per_day %> Euros</span>
+              </div>
+              <div class="flex ml-3">
+              </div>
+            </div>
           </div>
-          <%= link_to "", coder_path(coder), class: 'card-link' %>
+          <div class="flat-card-actions">
+            <%= link_to 'More info', coder_path(coder) %>
+
+          </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
-
-
-
