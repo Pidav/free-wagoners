@@ -2,8 +2,29 @@
   <div class="row">
     <div class="col">
       <h1>Mon espace</h1>
-      <h2>Bienvenue sur ton espace : <%#= @user.first_name %></h2>
+      <h2>Bienvenue sur ton espace : <%= current_user.first_name %></h2>
       <hr>
+      <div class="dash">
+        <div class="compte">
+          <br>
+          <span><%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %></span>
+          <%= current_user.first_name %> <%= current_user.last_name %><i class="far fa-edit"></i>
+          <br>
+          <br>
+          <p>Adresse email : <%= current_user.email %></p>
+          <p>Numéro de téléphone : <%= current_user.phone_number %></p>
+        </div>
+        <div class="board">
+          <br>
+          <h3>Mes statistiques :</h3>
+          <p> Missions données (nombre) : <%= current_user.missions.count %></p>
+          <p> Missions données (euros) : <%= current_user.missions.sum(:total_price) %> €</p>
+
+        </div>
+
+
+      </div>
+
       <div class="card-category" style="background-image: url(https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)">
         Espace codeur
       </div>
