@@ -2,7 +2,12 @@ class CodersController < ApplicationController
   before_action :set_coder, only: [:show, :edit, :update]
 
   def index
+    if params[:query].present?
+      @query = params[:query]
+      @coders = Coder.where("name iLike '%#{params[:query]}%'")
+    else
     @coders = policy_scope(Coder.all)
+    end
   end
 
   def show
