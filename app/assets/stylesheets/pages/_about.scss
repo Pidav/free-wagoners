@@ -4,7 +4,7 @@ body {
 }
 
 .description {
-  background-color: #e8e8e8;
+  background-color: #bbbbbb;
 }
 
 .mission {
@@ -15,6 +15,16 @@ body {
 }
 
 .titre {
-  margin-top: 90px;
-
+  margin-top: 120px;
 }
+
+.wagon {
+  margin-top: 30px;
+  display: flex;
+  .wagonprez {
+    padding-top: 50px;
+    padding-left: 20px;
+  }
+}
+
+
