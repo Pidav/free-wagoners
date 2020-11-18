@@ -17,41 +17,12 @@
               <li>
                 <div class="mission-card">
                   <div class="mission-top d-flex justify-content-between align-items-center">
-                    <h4><%= mission.title %></h4>
-                    <span><%= mission.start_date %> au <%= mission.end_date %></span>
+                    <h4>Titre de ma mission : <%= mission.title %></h4>
+                    <span>du <%= mission.start_date %> au <%= mission.end_date %></span>
                   </div>
                   <hr class="m-1">
                   <div class="mission-long-desc">
-                    <p><%= mission.description %></p>
-                  </div>
-                  <hr class="m-1">
-                  <div class="missions-confidentials-infos">
-                    <span><%= mission.total_price %> €</span>
-                    <span><%= mission.validated_mission %> €</span>
-                    <span>given by <%= mission.user.first_name %> <%= mission.user.last_name %>
-                      from <%= mission.user.company_name %>
-                    </span>
-                  </div>
-                </div>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-      <div class="row my-4">
-        <div class="col-lg-10 col-offset-1 coder-missions-box">
-          <h3 class="m-4">Mes missions :</h3>
-          <ul class= "missions-list">
-            <% sorted_missions = current_user.missions.order(start_date: :desc) %>
-            <% sorted_missions.each do |mission| %>
-              <li>
-                <div class="mission-card">
-                  <div class="mission-top d-flex justify-content-between align-items-center">
-                    <h4><%= mission.title %></h4>
-                    <span><%= mission.start_date %> au <%= mission.end_date %></span>
-                  </div>
-                  <hr class="m-1">
-                  <div class="mission-long-desc">
+                    <h5>Description : </h5>
                     <p><%= mission.description %></p>
                   </div>
                   <hr class="m-1">
