@@ -31,13 +31,16 @@ class CodersController < ApplicationController
     end
   end
 
+  def edit
+    authorize @coder
+  end
+
   def update
-    @coder = Coder.update(coder_params)
+    @coder.update(coder_params)
+    authorize @coder
     redirect_to coder_path(@coder)
   end
 
-  def edit
-  end
 
   private
 
