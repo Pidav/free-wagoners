@@ -40,25 +40,28 @@
       <div class="col-4">
         <div class="flat-card">
           <div class="flat-card-image" style="background-image: url('<%= "https://source.unsplash.com/random/600x400" %>)"></div>
+          <%= link_to '', coder_path(coder),class: 'card-link' %>
           <div class="flat-card-content">
             <div class="flat-card-title">
               <h4><%= coder.name %></h4>
             </div>
-            <p><%= coder.description %></p>
+            <p><%= coder.description.truncate(50) %></p>
             <div class="flex">
               <div class="flex ml-3">
                 <i class="material-icons mr-2">Price: </i><span><%= coder.price_per_day %> Euros</span>
               </div>
+
               <div class="flex ml-3">
               </div>
             </div>
           </div>
           <div class="flat-card-actions">
             <%= link_to 'More info', coder_path(coder) %>
-
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+
