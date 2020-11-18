@@ -28,6 +28,7 @@
         <% else %>
           <%= image_tag "https://source.unsplash.com/random/400x400", height: 200, weight: 300, class: "profil-picture" %>
         <% end %>
+      </div>
       <% if current_user == @coder.user %>
         <div class="btn btn-danger">
           <%= link_to "edit coder", edit_coder_path(@coder) %>
