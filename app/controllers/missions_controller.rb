@@ -1,6 +1,8 @@
 class MissionsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
+
   def index
-    @missions = Mission.all
+    @missions = policy_scope(Mission.all)
   end
 
   def new
@@ -13,26 +15,19 @@ class MissionsController < ApplicationController
   def create
     @mission = Mission.new(coder_params)
     @coder = Coder.find(params[:coder_id])
+    @user = User.find(params[:user_id]) # current user
     @mission.coder = @coder
-    @mission.duration = @mission.end_date - @mission.start_date
-    @mission.total_price = @mission.duration * @coder.price_per_day
-    authorize @coder
+    duration = @mission.end_date - @mission.start_date
+    @mission.total_price = duration * @coder.price_per_day
+    @mission.user = @user
+    @mission.validated_mission = true
+    authorize @mission
     if @mission.save
-      redirect_to dashboard_path(current_user)
+      redirect_to "/dashboard"
     else
       render 'new'
     end
   end
-
-
-  def update
-    @mission = Mission.find(params[:id])
-    @mission = Mission.update(coder_params)
-  end
-
-  # def show
-  #   @missions = Mission.find(params[:id])
-  # end
 
   private
 

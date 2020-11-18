@@ -5,8 +5,10 @@
       <h2>Create a new Mission</h2>
 
       <%= simple_form_for [@coder, @mission] do |f| %>
+        <%= f.input :title %>
         <%= f.input :start_date %>
         <%= f.input :end_date %>
+        <%= f.input :description %>
         <div class="row justify-content-center">
         <%= f.button :submit, class: "btn btn-primary rounded-pill" %>
       </div>
