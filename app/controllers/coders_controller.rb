@@ -5,13 +5,8 @@ class CodersController < ApplicationController
   def index
     if params[:query].present?
       @query = params[:query]
-      sql_query = " \
-        coders.name @@ :query \
-        OR coders.description @@ :query \
-        OR missions.title @@ :query \
-        OR missions.description @@ :query \
-      "
-      @coders = policy_scope(Coder.joins(:missions).where(sql_query, query: "%#{params[:query]}%"))
+
+      @coders = policy_scope(Coder.global_search(@query))
     else
       @coders = policy_scope(Coder.all)
     end

@@ -1,8 +1,17 @@
 class Coder < ApplicationRecord
-  belongs_to :user
   has_many :missions
+  belongs_to :user
   has_many :reviews, through: :missions
   has_one_attached :photo
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [ :name, :description ],
+    associated_against: {
+      missions: [ :title, :description ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 
   validates :name, presence: true, uniqueness: true
   validates :price_per_day, presence: true, inclusion: { in: (1..10_000) }

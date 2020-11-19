@@ -35,7 +35,9 @@ gem 'devise'
 gem 'faker'
 gem 'pundit'
 gem 'cloudinary', '~> 1.16.0'
+gem 'pg_search', '~> 2.3.0'
 gem 'acts-as-taggable-on', '~> 6.0'
+
 
 
 group :development, :test do
