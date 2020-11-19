@@ -13,6 +13,11 @@
         <span><%= @coder.email %></span>
       </div>
       <div class="coder-stats p-3 d-flex justify-content-between">
+        <% if @coder.reviews.count > 0 %>
+          <div class="coder-stats-box d-flex justify-content-center align-items-center">
+            <span><%= (@coder.reviews.sum(:rating) / @coder.reviews.count.to_f).round(1)%> étoiles</span>
+          </div>
+        <% end %>
         <div class="coder-stats-box d-flex justify-content-center align-items-center">
           <span><%= @coder.price_per_day %> € / jour</span>
         </div>
