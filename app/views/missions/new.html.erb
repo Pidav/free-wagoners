@@ -1,9 +1,10 @@
-
+<div class="back-bar">
+  <%= link_to " << Back to coders description", _back_url  %>
+</div>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
       <h2>Create a new Mission</h2>
-
       <%= simple_form_for [@coder, @mission] do |f| %>
         <%= f.input :title %>
         <%= f.input :start_date %>
