@@ -2,22 +2,33 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <h2>Créer votre compte codeur soyez visible </h2>
+      <h2>Des missions à gogo ? Créer votre compte codeur </h2>
 
        <div class="card-category" style="background-image: url(https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)">
         Espace codeur
       </div>
 
       <%= simple_form_for [current_user, @coder] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :email %>
-        <%= f.input :description %>
-        <%= f.input :phone_number %>
-        <%= f.input :price_per_day %>
-        <%= f.input :photo, as: :file %>
-        <%= f.button :submit, class: "btn btn-primary" %>
+      <div class="form-row mt-4">
+        <div class="col-6 form-group">
+            <%= f.input :name, :placeholder => 'George', label: 'Prénom' %>
+        </div>
+        <div class="col-6 form-group">
+            <%= f.input :email, :placeholder => 'george@freewagoner.com' %>
+        </div>
+        <div class="col-6 form-group">
+            <%= f.input :phone_number, :placeholder => '+330646821047', label: 'Numéro de téléphone' %>
+        </div>
+        <div class="col-6 form-group">
+            <%= f.input :price_per_day, :placeholder => '499', label: 'Prix par jour' %>
+        </div>
+      </div>
+            <%= f.input :description, as: :text, input_html: {rows: 6}, :placeholder => 'Taper ici votre texte pour décrire votre parcours professionnel'%>
+            <%= f.input :photo, as: :file, :label => false %>
+          <div class="row justify-content-center">
+            <%= f.button :submit, 'Mettre votre profil coder',class: "btn btn-primary rounded-pill" %>
+          </div>
       <% end %>
     </div>
   </div>
-<div>
 
