@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <h2>Edit your Coder</h2>
-
+      <h2>Edition de votre profil de Codeur</h2>
       <%= simple_form_for [@coder] do |f| %>
         <%= f.input :name %>
         <%= f.input :email %>
-        <%= f.input :description %>
         <%= f.input :phone_number %>
+        <%= f.input :description %>
+        <%= f.input :tag_list, as: :check_boxes, collection: [ "Ruby", "Javascript", "HTML", "CSS" ] %>
         <%= f.input :price_per_day %>
         <%= f.input :photo, as: :file %>
         <%= f.button :submit, class: "btn btn-primary" %>

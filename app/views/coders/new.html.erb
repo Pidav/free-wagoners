@@ -8,6 +8,7 @@
         Espace codeur
       </div>
 
+
       <%= simple_form_for [current_user, @coder] do |f| %>
       <div class="form-row mt-4">
         <div class="col-6 form-group">
@@ -19,6 +20,9 @@
         <div class="col-6 form-group">
             <%= f.input :phone_number, :placeholder => '+330646821047', label: 'Numéro de téléphone' %>
         </div>
+        <div class="col-6 form-group">
+            <%= f.input :tag_list, as: :check_boxes, collection: [ "Ruby", "Javascript", "HTML", "CSS" ] %>
+        </div>        
         <div class="col-6 form-group">
             <%= f.input :price_per_day, :placeholder => '499', label: 'Prix par jour' %>
         </div>
