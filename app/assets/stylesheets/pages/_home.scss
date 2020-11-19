@@ -42,13 +42,10 @@
   margin-left: 50px;
 }
 
-.client-logo li {
-  color: #167FFB;
-  list-style: none;
-  display: inline-block;
-  font-size: 30px;
-  margin-top: 50px;
-  padding-right: 15px;
+.client-logo {
+  width :100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 h2 {
