@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="coder-card-actions">
-    <%= link_to 'More info', coder_path(coder) %>
+    <%= link_to 'En savoir plus', coder_path(coder), class: "btn btn-outline-primary" %>
     <% if coder.user == current_user %>
       <span class="coder-card-appartenance"> Mon profil </span>
     <% end %>
