@@ -1,0 +1,40 @@
+<div class="mission-card">
+  <div class="mission-top">
+    <h4><%= mission.title %></h4>
+    <span><i class="far fa-calendar-alt mr-2"></i>du <%= mission.start_date %> au <%= mission.end_date %></span>
+  </div>
+  <hr class="m-1">
+  <div class="mission-long-desc mt-2">
+    <p><%= mission.description %></p>
+  </div>
+  <% if mission.coder.user == current_user %>
+    <hr class="m-1">
+    <div id="missions-confidentials-coder-infos">
+      <span><%= mission.total_price %> € - </span>
+      <% if mission.validated_mission %>
+        <span>Mission validée - </span>
+      <% else %>
+        <span>Mission en attente de validation - </span>
+      <% end %>
+      <span>donnée par <%= mission.user.first_name %> <%= mission.user.last_name %>
+        from <%= mission.user.company_name %>
+      </span>
+    </div>
+  <% end %>
+  <% if mission.user == current_user %>
+    <hr class="m-1">
+    <div id="missions-confidentials-coder-infos">
+      <span><%= mission.total_price %> € - </span>
+      <% if mission.validated_mission %>
+        <span>Mission validée par le coder- </span>
+      <% else %>
+        <span>Mission en attente de validation - </span>
+      <% end %>
+      <span> donnée à </span>
+      <%= link_to coder_path(mission.coder) do %>
+        <%= mission.coder.name %>
+      <% end %>
+      <span> le <%= mission.coder.created_at %></span>
+    </div>
+  <% end %>
+</div>

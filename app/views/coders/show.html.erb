@@ -52,26 +52,7 @@
         <% sorted_missions = @coder.missions.where(validated_mission: true).order(start_date: :desc) %>
         <% sorted_missions.each do |mission| %>
           <li>
-            <div class="mission-card">
-              <div class="mission-top">
-                <h4><%= mission.title %></h4>
-                <span><i class="far fa-calendar-alt mr-2"></i>du <%= mission.start_date %> au <%= mission.end_date %></span>
-              </div>
-              <hr class="m-1">
-              <div class="mission-long-desc mt-2">
-                <p><%= mission.description %></p>
-              </div>
-              <% if mission.user == current_user %>
-                <hr class="m-1">
-                <div class="missions-confidentials-infos">
-                  <span><%= mission.total_price %> €</span>
-                  <span><%= mission.validated_mission %> €</span>
-                  <span>given by <%= mission.user.first_name %> <%= mission.user.last_name %>
-                    from <%= mission.user.company_name %>
-                  </span>
-                </div>
-              <% end %>
-            </div>
+            <%= render partial: 'missions/mission_card', locals: {mission: mission} %>
           </li>
         <% end %>
       </ul>
