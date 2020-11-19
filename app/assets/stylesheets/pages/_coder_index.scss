@@ -56,14 +56,15 @@
   position: relative;
   margin: .5rem 0 1rem 0;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: 8px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 }
 
 .flat-card-image {
-  height: 180px;
+  height: 160px;
   background-position: center;
   background-size: cover;
+  border-radius: 8px 8px 0px 0px;
 }
 
 .flat-card-content {
@@ -109,6 +110,38 @@
   font-weight: 300;
   font-size: 20px;
   color: #333;
+}
+
+.tag {
+  margin-top: 4px;
+  background-color: #F7F7F9;
+  height: 28px;
+  border-radius: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
+  input {
+    margin-left: 40px;
+    padding-top: 2px;
+  }
+}
+
+.flat-card-actions {
+  text-align: center;
+  opacity: 1;
+  margin-top: 15px;
+
+}
+
+.flat-card:hover {
+  opacity: 1;
+}
+
+.flat-card-price {
+  background-color: #ADB5BD;
+  height: 25px;
+  padding-left: 6px;
+  width: 100px;
+  border-radius: 4px;
 }
 
 

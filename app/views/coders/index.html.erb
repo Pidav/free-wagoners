@@ -6,17 +6,21 @@
 <%= simple_form_for :query, url: coders_path, method: :get do |f| %>
   <div class="row justify-content-center">
   <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="query" id="query" value="<%= params[:query] %>"/>
+    <input class="form-control string required" placeholder="Essayez 'React.js','java', 'Steve Jobs'..." type="text" name="query" id="query" value="<%= params[:query] %>"/>
     <button name="button" type="submit" class="btn btn-danger">
-      <i class="fas fa-search"></i> Search
+      <i class="fas fa-search"></i>Search
     </button>
-    <div class=" tag">
-    <%= check_box_tag(:tag_1) %>
-    <%= label_tag(:tag_1, "Ruby") %>
-    <%= check_box_tag(:tag_2) %>
-    <%= label_tag(:tag_2, "java") %>
-    </div>
 
+    <div class="tag">
+    <%= check_box_tag(:tag_1) %>
+    <%= label_tag(:tag_1, "Front") %>
+    <%= check_box_tag(:tag_2) %>
+    <%= label_tag(:tag_2, "Back") %>
+    <%= check_box_tag(:tag_2) %>
+    <%= label_tag(:tag_2, "Full stack") %>
+    <input type="range" id="volume" name="tarif" min="100" max="2000">
+    <label for="tarif">Tarif / jour</label>
+    </div>
   </div>
 </div>
 <% end %>
@@ -25,7 +29,7 @@
   <div class="row">
     <div class="col-12">
     </div>
-  </div>
+    </div>
 
   <div class="row">
     <div class="col">
