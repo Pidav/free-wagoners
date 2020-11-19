@@ -2,7 +2,7 @@
 .home {
   background-image: url('https://images.unsplash.com/photo-1593720216276-0caa6452e004?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1648&q=80');
   background-size: cover;
-  height: 60vh;
+  height: 80vh;
   color: #eee;
   text-align: center;
   padding-top: 40vh;
@@ -10,13 +10,10 @@
   h1 {
   font-weight: bold;
   font-size: 60px;
-  margin-top: -200px;
-  h3 {
-  font-weight: bold;
-  font-size: 60px;
+  margin-top: -100px;
   }
 }
-}
+
 
 .card {
   width: 350px;
@@ -26,6 +23,11 @@
   padding: 20px;
   text-align: center;
   margin-left: 10px;
+   h3 {
+  font-weight: bold;
+  font-size: 24px;
+  color: #ff414d;
+  }
 }
 
 .cards img {
@@ -50,9 +52,11 @@
 
 h2 {
   text-align: center;
+  font-weight: bold;
+  color: #1aa6b7;
 }
 
 #carouselExampleIndicators {
-  margin-left: 150px;
+  margin-left: 200px;
 }
 
