@@ -15,17 +15,24 @@
         <span><%= @coder.email %></span>
       </div>
       <div class="coder-stats p-3 d-flex justify-content-between">
+        <div class="coder-stats-box d-flex justify-content-center align-items-center">
+          <span><%= @coder.price_per_day %> € / jour</span>
+        </div>
+        <% nb_missions_ok = @coder.missions.where(validated_mission: true).count %>
+        <div class="coder-stats-box d-flex justify-content-center align-items-center">
+          <% if nb_missions_ok == 0 %>
+            <span>Disponible pour vos missions</span>
+          <% elsif nb_missions_ok == 0 %>
+            <span>1 mission acceptée</span>
+          <% else %>
+            <span><%= nb_missions_ok %> missions acceptées</span>
+          <% end %>
+        </div>
         <% if @coder.reviews.count > 0 %>
           <div class="coder-stats-box d-flex justify-content-center align-items-center">
             <span><%= (@coder.reviews.sum(:rating) / @coder.reviews.count.to_f).round(1)%> étoiles</span>
           </div>
         <% end %>
-        <div class="coder-stats-box d-flex justify-content-center align-items-center">
-          <span><%= @coder.price_per_day %> € / jour</span>
-        </div>
-        <div class="coder-stats-box d-flex justify-content-center align-items-center">
-          <span><%= @coder.missions.where(validated_mission: true).count %> missions <br> acceptées</span>
-        </div>
       </div>
     </div>
     <div class="col-lg-4 coder-top picture-box">
