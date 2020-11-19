@@ -12,7 +12,7 @@
 
 .compte {
  background-color: white;
- height: 200px;
+ height: 230px;
  width: 400px;
  margin-bottom: 30px;
  margin-left: 20px;
@@ -27,7 +27,7 @@
 
 .board {
  background-color: white;
- height: 200px;
+ height: 230px;
  width: 640px;
  padding-left: 10px;
  margin-bottom: 30px;
@@ -39,6 +39,9 @@
 }
 
 .dashboard-coder {
+  background-color: white;
+  width: 1060px;
+  border-radius: 5px;
   display: flex;
   margin-left: 20px;
   .card-category{
