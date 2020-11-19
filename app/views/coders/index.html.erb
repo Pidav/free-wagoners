@@ -1,7 +1,8 @@
-
+<div class="back-bar">
+<%= link_to " << Back to home", root_path  %>
+</div>
 <h1 style="text-align: center">Les meilleurs talents du Wagon</h1>
 <h2>Trouvez votre expert parmi nos freelances!</h2>
-
 <%= simple_form_for :query, url: coders_path, method: :get do |f| %>
   <div class="row justify-content-center">
   <div class="search-form-control form-group">
@@ -33,7 +34,7 @@
   <div class="row">
     <div class="col">
       <% if @query %>
-        <p>You searched for <strong><%= @query %></strong>. We found <%= @coders.count %> coders out of our <%= Coder.count %> on our website.</p>
+        <p>Vous avez cherché "<strong><%= @query %></strong>". Nous avons trouvé <%= @coders.count %> codeurs sur  <%= Coder.count %> sur notre site web.</p>
       <% else %>
         <p>All <%= Coder.count %> coders.</p>
       <% end %>
@@ -42,30 +43,7 @@
   <div class="row">
     <% @coders.order(updated_at: :desc ).each do |coder| %>
       <div class="col-4">
-        <div class="flat-card">
-          <%= link_to '', coder_path(coder),class: 'card-link' %>
-          <% if coder.photo.attached? %>
-            <div class="flat-card-image" style="background-image: url('<%= cl_image_path coder.photo.key, height: 300, width: 400, crop: :fill %>')"></div>
-          <% else %>
-            <div class="flat-card-image" style="background-image: url(https://res.cloudinary.com/dnpdonlro/image/upload/v1605711952/committed_to_excellence-8c514667b11ec04b4172d45d04718e4968c6a518875df69fa7faad1fc956a4e9_hvctwi.jpg)"></div>
-          <% end %>
-          <div class="flat-card-content">
-            <div class="flat-card-title">
-              <h4></i><%= coder.name %></h4>
-            </div>
-            <div class="flat-card-description">
-              <p><%= coder.description.truncate(50) %></p>
-            <div class="flat-card-price">
-              <span><%= coder.price_per_day%> </span><i class="fas fa-euro-sign"> /jour</i>
-            </div>
-                <div class="flat-card-actions">
-                    <%= link_to 'En savoir plus', coder_path(coder), class: "btn btn-outline-danger"%>
-                </div>
-                <div class="flex ml-3">
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render partial: 'coders/coder_card', locals: {coder: coder} %>
       </div>
     <% end %>
   </div>
