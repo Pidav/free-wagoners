@@ -14,5 +14,8 @@ Rails.application.routes.draw do
     resources :missions, only: [:new, :create]
 
   end
-  resources :missions, only: [:index, :edit, :update]
+  resources :missions, only: [:index, :edit, :update] do
+    resources :reviews, only: [:new, :create]
+  end
+  resources :reviews, only: [:index]
 end

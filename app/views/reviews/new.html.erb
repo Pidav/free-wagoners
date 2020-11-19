@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2>Donnez votre avis sur la mission </h2>
+      <p> Mission : <%= @mission.title %> confiée à <%= @mission.coder.name %></p>
+      <%= simple_form_for [@mission, @review] do |f| %>
+        <%= f.input :content %>
+        <%= f.input :rating %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+<div>
