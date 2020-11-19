@@ -12,7 +12,7 @@
   <% else %>
     <div class="coder-card-image" style="background-image: url(https://res.cloudinary.com/dnpdonlro/image/upload/v1605711952/committed_to_excellence-8c514667b11ec04b4172d45d04718e4968c6a518875df69fa7faad1fc956a4e9_hvctwi.jpg)"></div>
   <% end %>
-  <%= link_to '', coder_path(coder),class: 'card-link' %>
+  <%= link_to '', coder_path(coder)%>
   <div class="coder-card-content">
     <div class="coder-card-title">
       <h4><%= coder.name %></h4>
@@ -21,9 +21,9 @@
       <p><%= coder.description.truncate(50) %></p>
     </div>
     <div class="coder-card-tags d-flex">
-        <% coder.tag_list.each do |tag| %>
-          <div class="coder-tags"><%= tag %></div>
-        <% end %>
+      <% coder.tag_list.first(4).each do |tag| %>
+        <div class="coder-tags"><%= tag %></div>
+      <% end %>
     </div>
   </div>
   <div class="coder-card-actions">
