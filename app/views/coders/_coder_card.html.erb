@@ -20,6 +20,11 @@
     <div class="coder-card-description">
       <p><%= coder.description.truncate(50) %></p>
     </div>
+    <div class="coder-card-tags d-flex">
+        <% coder.tag_list.each do |tag| %>
+          <div class="coder-tags"><%= tag %></div>
+        <% end %>
+    </div>
   </div>
   <div class="coder-card-actions">
     <%= link_to 'More info', coder_path(coder) %>

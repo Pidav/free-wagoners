@@ -5,70 +5,85 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Mon espace</h1>
+      <br>
       <h2>Bienvenue sur ton espace : <%= current_user.first_name %></h2>
       <hr>
+
+   <!--    DASHBOARD  -->
+
       <div class="dash">
         <div class="compte">
           <br>
           <span><%= image_tag "https://kitt.lewagon.com/placeholder/users/arthur-littm", class: "avatar-large", alt: "avatar-large" %></span>
-          <%= current_user.first_name %> <%= current_user.last_name %><i class="far fa-edit"></i>
+          <%= current_user.first_name %> <%= current_user.last_name %>
           <br>
           <br>
-          <p>Adresse email : <%= current_user.email %></p>
-          <p>Numéro de téléphone : <%= current_user.phone_number %></p>
+          <p><i class="fas fa-envelope-open-text"></i>   <%= current_user.email %></p>
+          <p><i class="fas fa-phone-square-alt"></i>   <%= current_user.phone_number %></p>
         </div>
         <div class="board">
           <br>
           <h3>Mes statistiques :</h3>
           <p> Missions données (nombre) : <%= current_user.missions.count %></p>
           <p> Missions données (euros) : <%= current_user.missions.sum(:total_price) %> €</p>
-
         </div>
-
-
       </div>
 
-      <div class="card-category" style="background-image: url(https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)">
-        Espace codeur
+<!--       ESPACE RECRUTEUR / CODEUR  -->
+
+      <div class="dashboard-coder">
+        <div class="card-category" style="background-image: url(https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)">
+          Espace codeur
+        </div>
+        <br>
+        <div class="coder">
+          <% if current_user.coders.count == 0 %>
+            <%= link_to "Créer mon profil de codeur", new_user_coder_path(current_user)%>
+          <% elsif current_user.coders.count == 1 %>
+          <br>
+          <br>
+          <h3><%= link_to "Editer mon profil de codeur", "#"%></h3>
+          <br>
+          <h3><%= link_to "Voir mes missions de codeur", missions_mes_codeurs_path%></h3>
+          <br>
+          <h3><%= link_to "Créer un autre profil de codeur", new_user_coder_path(current_user)%></h3>
+
+          <% else %>
+          <br>
+          <br>
+          <h3><%= link_to "Créer un profil de codeur", new_user_coder_path(current_user)%></h3>
+          <br>
+          <h3><%= link_to "Voir les missions de mes codeurs", missions_mes_codeurs_path%></h3>
+
+            <ul class="coders-list">
+              <% current_user.coders.each do |coder| %>
+                <li>
+                  <%= coder.name %>
+                  <%= link_to "Edit ce coder", edit_coder_path(coder) %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
       </div>
       <br>
-      <div class="coder">
-        <% if current_user.coders.count == 0 %>
-          <%= link_to "Créer mon profil de codeur", new_user_coder_path(current_user), class: "btn btn-danger" %>
-        <% elsif current_user.coders.count == 1 %>
-          <%= link_to "Editer mon profil de codeur", "#", class: "btn btn-danger" %>
-          <%= link_to "Voir mes missions de codeur", missions_mes_codeurs_path, class: "btn btn-danger" %>
-          <%= link_to "Créer un autre profil de codeur", new_user_coder_path(current_user), class: "btn btn-danger" %>
-        <% else %>
-          <%= link_to "Créer un profil de codeur", new_user_coder_path(current_user), class: "btn btn-danger" %>
-          <%= link_to "Voir les missions de mes codeurs", missions_mes_codeurs_path, class: "btn btn-danger" %>
-          <ul class="coders-list">
-            <% current_user.coders.each do |coder| %>
-              <li>
-                <%= coder.name %>
-                <%= link_to "Edit ce coder", edit_coder_path(coder) %>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
-
-
+ <!--        ESPACE RECRUTEUR  -->
+        <div class="dashboard-coder">
+        <div class="card-category" style="background-image: url(https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)">
+          Espace recruteur
+        </div>
+        <br>
+        <div class="company">
+          <br>
+          <br>
+          <h3><%= link_to "Mes freelances favoris", "#" %></h3>
+          <br>
+          <h3><%= link_to "Mes factures", "#" %></h3>
+          <br>
+          <h3><%= link_to "Mes missions", "/missions_recruteur" %></h3>
+        </div>
+        <hr>
       </div>
-
-      <br>
-
-
-      <div class="card-category" style="background-image: url(https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)">
-        Espace recruteur
-      </div>
-      <br>
-      <div class="company">
-        <a class="btn btn-primary" href="#" role="button">Mes freelances favoris</a>
-        <a class="btn btn-primary" href="#" role="button">Mes factures</a>
-        <a class="btn btn-primary" href="/missions_recruteur" role="button">Mes missions</a>
-      </div>
-      <hr>
     </div>
   </div>
 </div>
