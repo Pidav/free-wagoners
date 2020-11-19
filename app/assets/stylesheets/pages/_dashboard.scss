@@ -1,9 +1,9 @@
 .coder {
-  margin-left: 175px;
+  margin-left: 30px;
 }
 
 .company {
-  margin-left: 175px;
+  margin-left: 30px;
 }
 
 .dash {
@@ -11,7 +11,7 @@
 }
 
 .compte {
- background-color: #f56a79;
+ background-color: white;
  height: 200px;
  width: 400px;
  margin-bottom: 30px;
@@ -26,13 +26,23 @@
 }
 
 .board {
- background-color: #ffdd93;
+ background-color: white;
  height: 200px;
  width: 640px;
+ padding-left: 10px;
  margin-bottom: 30px;
  margin-left: 20px;
  border-radius: 5px;
  h3{
   text-align: center;
  }
+}
+
+.dashboard-coder {
+  display: flex;
+  margin-left: 20px;
+  .card-category{
+    width: 400px;
+  }
+
 }
