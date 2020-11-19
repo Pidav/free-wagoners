@@ -37,12 +37,15 @@
       <span> le <%= mission.coder.created_at %></span>
     </div>
   <% end %>
-    <hr class="m-1">
   <% if mission.reviews.count == 0 %>
-    <div id="missions-review-infos">
-      <%= link_to "Ajouter un avis", new_mission_review_path(mission)  %>
-    </div>
+    <% if mission.user == current_user %>
+      <hr class="m-1">
+      <div id="missions-review-infos">
+        <%= link_to "Ajouter un avis", new_mission_review_path(mission)  %>
+      </div>
+    <% end %>
   <% else %>
+    <hr class="m-1">
     <div id="missions-review-infos">
       <p> <%= mission.reviews.first.rating  %> étoiles </p>
       <p><%= mission.reviews.first.content  %></p>

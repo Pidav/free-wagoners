@@ -12,12 +12,7 @@
   </head>
 
   <body class="body">
-
-    <% if user_signed_in? %>
-      <%= render "shared/navbar" %>
-    <% else %>
-      <%= render "shared/navbarhome" %>
-    <% end %>
+    <%= render "shared/navbar" %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
