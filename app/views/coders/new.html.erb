@@ -24,7 +24,7 @@
             <%= f.input :price_per_day, :placeholder => '499', label: 'Prix par jour' %>
         </div>
         <div class="col-12 form-group">
-            <%= f.input :tag_list, as: :check_boxes, collection: [ "Ruby", "Javascript", "HTML", "CSS" ] %>
+            <%= f.input :tag_list, as: :check_boxes, collection: Coder::CODE_LIST %>
         </div>
       </div>
             <%= f.input :description, as: :text, input_html: {rows: 6}, :placeholder => 'Taper ici votre texte pour décrire votre parcours professionnel'%>
