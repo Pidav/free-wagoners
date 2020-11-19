@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon mb-3">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon mb-3 fixed-top">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png", class: "logo-size" %>
     <%= "Partenaire Officiel du" %>
@@ -18,7 +18,7 @@
       <% end %>
 
       <li class="nav-item">
-        <%= link_to "Démarrer", new_user_registration_path, class: "btn btn-danger rounded-pill" %>
+        <%= link_to "Démarrer", new_user_registration_path, class: "btn btn-outline-danger rounded-pill" %>
       </li>
        <li class="nav-item active">
         <%= link_to "Me connecter", new_user_session_path, class: "nav-link" %>
