@@ -2,10 +2,10 @@
 <h1 style="text-align: center">Les meilleurs talents du Wagon</h1>
 <h2>Trouvez votre expert parmi nos freelances!</h2>
 
-<%= simple_form_for :search, url: root_path, method: :get do |f| %>
+<%= simple_form_for :query, url: coders_path, method: :get do |f| %>
   <div class="row justify-content-center">
   <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="query" id="query" />
+    <input class="form-control string required" type="text" name="query" id="query" value="<%= params[:query] %>"/>
     <button name="button" type="submit" class="btn btn-danger">
       <i class="fas fa-search"></i> Search
     </button>
@@ -49,10 +49,10 @@
             <div class="flat-card-title">
               <h4><%= coder.name %></h4>
             </div>
+            <div class="flat-card-description">
             <p><%= coder.description.truncate(50) %></p>
-            <div class="flex">
-              <div class="flex ml-3">
-                <i class="material-icons mr-2">Price: </i><span><%= coder.price_per_day %> Euros</span>
+            <div class="flat-card-price">
+                <i class="material-icons mr-3"></i><span><%= coder.price_per_day %>€</span>
               </div>
 
               <div class="flex ml-3">
