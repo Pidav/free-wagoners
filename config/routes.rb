@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
   get 'missions_recruteur', to: 'pages#missions_recruteur'
+  get 'missions_mes_codeurs', to: 'pages#missions_mes_codeurs'
   get 'about', to: 'pages#about'
 
   resources :users, only: [:edit, :update] do

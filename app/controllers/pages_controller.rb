@@ -4,9 +4,16 @@ class PagesController < ApplicationController
   def home
   end
 
+  def about
+  end
+
   def dashboard
   end
 
-  def about
+  def missions_mes_codeurs
   end
+
+  def missions_recruteur
+  end
+
 end

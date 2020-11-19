@@ -30,11 +30,25 @@
       </div>
       <br>
       <div class="coder">
+        <% if current_user.coders.count == 0 %>
+          <%= link_to "Créer mon profil de codeur", new_user_coder_path(current_user), class: "btn btn-danger" %>
+        <% elsif current_user.coders.count == 1 %>
+          <%= link_to "Editer mon profil de codeur", "#", class: "btn btn-danger" %>
+          <%= link_to "Voir mes missions de codeur", missions_mes_codeurs_path, class: "btn btn-danger" %>
+          <%= link_to "Créer un autre profil de codeur", new_user_coder_path(current_user), class: "btn btn-danger" %>
+        <% else %>
+          <%= link_to "Créer un profil de codeur", new_user_coder_path(current_user), class: "btn btn-danger" %>
+          <%= link_to "Voir les missions de mes codeurs", missions_mes_codeurs_path, class: "btn btn-danger" %>
+          <ul class="coders-list">
+            <% current_user.coders.each do |coder| %>
+              <li>
+                <%= coder.name %>
+                <%= link_to "Edit ce coder", edit_coder_path(coder) %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
 
-
-        <%= link_to "Créer un profil de codeur", new_user_coder_path(current_user), class: "btn btn-danger" %>
-        <%= link_to "Editer un profil de codeur", "#", class: "btn btn-danger" %>
-        <%= link_to "Les missions de mes codeurs", "#", class: "btn btn-danger" %>
 
       </div>
 
