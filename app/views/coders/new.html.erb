@@ -21,10 +21,10 @@
             <%= f.input :phone_number, :placeholder => '+330646821047', label: 'Numéro de téléphone' %>
         </div>
         <div class="col-6 form-group">
-            <%= f.input :tag_list, as: :check_boxes, collection: [ "Ruby", "Javascript", "HTML", "CSS" ] %>
-        </div>        
-        <div class="col-6 form-group">
             <%= f.input :price_per_day, :placeholder => '499', label: 'Prix par jour' %>
+        </div>
+        <div class="col-12 form-group">
+            <%= f.input :tag_list, as: :check_boxes, collection: [ "Ruby", "Javascript", "HTML", "CSS" ] %>
         </div>
       </div>
             <%= f.input :description, as: :text, input_html: {rows: 6}, :placeholder => 'Taper ici votre texte pour décrire votre parcours professionnel'%>
@@ -36,4 +36,3 @@
     </div>
   </div>
 </div>
-

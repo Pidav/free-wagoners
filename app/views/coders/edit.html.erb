@@ -9,9 +9,9 @@
         <%= f.input :description %>
         <%= f.input :tag_list, as: :check_boxes, collection: [ "Ruby", "Javascript", "HTML", "CSS" ] %>
         <%= f.input :price_per_day %>
-        <%= f.input :photo, as: :file %>
+        <%= f.input :photo, as: :file, label:"Votre photo" %>
         <%= f.button :submit, class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
-<div>
+</div>
