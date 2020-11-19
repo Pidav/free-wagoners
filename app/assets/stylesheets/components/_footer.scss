@@ -1,5 +1,5 @@
 .footer {
-  margin-top: 80px;
+  margin-top: 90px;
   height: 150px;
   background-color: #1aa6b7;
   color: grey;
@@ -22,5 +22,9 @@
     color: white;
     text-decoration: none;
   }
+}
+
+.content-wrapper {
+  min-height: calc(100vh - 80px - 80px);
 }
 
