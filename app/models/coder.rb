@@ -1,4 +1,7 @@
 class Coder < ApplicationRecord
+
+CODE_LIST = [ "Ruby", "Python", "Javascript", "HTML", "CSS", "ReactJS", "VueJS", "API", "PHP", "Java", "Symfony" ]
+
   belongs_to :user
   has_many :missions
   has_many :reviews, through: :missions
@@ -23,5 +26,4 @@ class Coder < ApplicationRecord
 
   acts_as_taggable_on :tags
 
-  CODE_LIST = [ "Ruby", "Javascript", "HTML", "CSS", "Python", "ReactJS", "VueJS", "API", "PHP", "Java", "Symfony" ]
 end
