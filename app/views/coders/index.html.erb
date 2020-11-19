@@ -1,7 +1,8 @@
-
+<div class="back-bar">
+<%= link_to " << Back to home", root_path  %>
+</div>
 <h1 style="text-align: center">Les meilleurs talents du Wagon</h1>
 <h2>Trouvez votre expert parmi nos freelances!</h2>
-
 <%= simple_form_for :query, url: coders_path, method: :get do |f| %>
   <div class="row justify-content-center">
   <div class="search-form-control form-group">
@@ -29,7 +30,7 @@
   <div class="row">
     <div class="col">
       <% if @query %>
-        <p>You searched for <strong><%= @query %></strong>. We found <%= @coders.count %> coders out of our <%= Coder.count %> on our website.</p>
+        <p>Vous avez cherché "<strong><%= @query %></strong>". Nous avons trouvé <%= @coders.count %> codeurs sur  <%= Coder.count %> sur notre site web.</p>
       <% else %>
         <p>All <%= Coder.count %> coders.</p>
       <% end %>
