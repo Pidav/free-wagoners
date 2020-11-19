@@ -1,19 +1,35 @@
 <div class="back-bar">
-<%= link_to " << Back to coders list", _back_url  %>
+<%= link_to " << Retour aux résultats de recherche", _back_url, class: "btn btn-outline-danger rounded-pill btn-lg"  %>
 </div>
 
+<div class="bandeau-show">
+  <div class="coder-picture p-3 d-flex">
+    <% if @coder.photo.attached? %>
+      <%= cl_image_tag @coder.photo.key , height: 200, weight: 300, class: "profil-picture" %>
+    <% else %>
+      <%= image_tag "https://res.cloudinary.com/dnpdonlro/image/upload/v1605711897/qfp8ofi6fmh2nrgx88xr5cwi2jl9.jpg", height: 200, weight: 300, class: "profil-picture" %>
+    <% end %>
+  </div>
+  <div>
+    <h1 class="m-0"><%= @coder.name %></h1>
+    <br>
+    <span><%= @coder.description.truncate(70) %></span>
+    <br>
+    <span><%= @coder.email %></span>
+  </div>
+
+  <div class="cta-show">
+    <% if current_user == @coder.user %>
+      <%= link_to "Editer mon profil", edit_coder_path(@coder), class: "btn btn-danger" %>
+    <% else %>
+        <%= link_to "Contacter ce freelance", new_coder_mission_path(@coder), class: "btn btn-danger" %>
+    <% end %>
+  </div>
 </div>
+
 <div class="container">
   <div class="row my-4">
     <div class="col-lg-8 coder-top infos-box">
-      <div class="coder-name p-3 d-flex justify-content-center align-items-center">
-        <h1 class="m-0"><%= @coder.name %></h1>
-      </div>
-      <div class="coder-short-desc p-3">
-        <span><%= @coder.description.truncate(50) %></span>
-        <br>
-        <span><%= @coder.email %></span>
-      </div>
       <div class="coder-stats p-3 d-flex justify-content-between">
         <div class="coder-stats-box d-flex justify-content-center align-items-center">
           <span><%= @coder.price_per_day %> € / jour</span>
@@ -35,27 +51,11 @@
         <% end %>
       </div>
     </div>
-    <div class="col-lg-4 coder-top picture-box">
-      <div class="coder-picture p-3 d-flex">
-        <% if @coder.photo.attached? %>
-          <%= cl_image_tag @coder.photo.key , height: 200, weight: 300, class: "profil-picture" %>
-        <% else %>
-          <%= image_tag "https://res.cloudinary.com/dnpdonlro/image/upload/v1605711897/qfp8ofi6fmh2nrgx88xr5cwi2jl9.jpg", height: 200, weight: 300, class: "profil-picture" %>
-        <% end %>
-      </div>
-      <% if current_user == @coder.user %>
-        <div class="btn btn-danger">
-          <%= link_to "edit coder", edit_coder_path(@coder) %>
-        </div>
-      <% else %>
-        <div class="btn btn-danger">
-          <%= link_to "book for a mission", new_coder_mission_path(@coder) %>
-        </div>
-      <% end %>
-    </div>
   </div>
+
   <div class="row my-4">
     <div class="col-12">
+      <h3><%= @coder.name %> en quelques mots</h3>
       <p><%= @coder.description%></p>
     </div>
   </div>
