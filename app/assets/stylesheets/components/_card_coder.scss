@@ -42,13 +42,20 @@
 .coder-card-content {
   padding: 16px;
   background-color: #F8F9FA;
+  p {
+    margin-bottom: 0.5rem;
+  }
+}
+.coder-tags {
+  padding: 4px 8px;
+  background-color: $orange;
+  margin-right: 4px;
 }
 
 .coder-card-actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // position: relative;
   background-color: inherit;
   border-top: 1px solid rgba(160,160,160,0.2);
   padding: 8px 16px;
@@ -63,3 +70,4 @@
     padding: 4px 16px;
   }
 }
+

@@ -54,6 +54,14 @@
   </div>
 
   <div class="row my-4">
+    <div class="col-12 d-flex">
+      <% @coder.tag_list.each do |tag| %>
+        <div class="coder-tags"><%= tag %></div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row my-4">
     <div class="col-12">
       <h3><%= @coder.name %> en quelques mots</h3>
       <p><%= @coder.description%></p>
