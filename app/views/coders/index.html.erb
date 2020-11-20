@@ -1,28 +1,23 @@
 <br>
-<h2>Trouvez votre expert parmi nos freelances!</h2>
+<h2>Trouver votre expert parmi nos freelances!</h2>
 <%= simple_form_for :query, url: coders_path, method: :get do |f| %>
   <div class="row justify-content-center">
-  <div class="search-form-control form-group">
-    <input class="form-control string required" placeholder="Essayez 'React.js','java', 'Steve Jobs'..." type="text" name="query" id="query" value="<%= params[:query] %>"/>
-    <button name="button" type="submit" class="rounded-pill btn btn-danger">
-      <i class="fas fa-search"></i>  Chercher
-    </button>
-
-    <div class="tag">
-    <%= check_box_tag(:tag) %>
-    <%= label_tag(:tag, "Javascript") %>
-    <%= check_box_tag(:tag) %>
-    <%= label_tag(:tag, "HTML") %>
-    <%= check_box_tag(:tag) %>
-    <%= label_tag(:tag, "CSS") %>
-    <%= check_box_tag(:tag) %>
-    <%= label_tag(:tag, "ReactJS") %>
-    <input type="range" id="volume" name="tarif" min="100" max="2000">
-    <label for="tarif">Tarif / jour</label>
+    <div class="search-form-control form-group">
+      <input class="form-control string required" placeholder="Essayez 'React.js','java', 'Steve Jobs'..." type="text" name="query" id="query" value="<%= params[:query] %>"/>
+        <button name="button" type="submit" class="rounded-pill btn btn-danger">
+          <i class="fas fa-search"></i>  Chercher
+        </button>
+        <div class="tag">
+          <% @coders.each do |r| %>
+            <% r.tag_list.each do |tag| %>
+              <%= link_to tag, coders_path(tag: tag) %>
+            <% end %>
+          <% end %>
+        </div>
     </div>
   </div>
-</div>
 <% end %>
+
 
  <div class="container mt-3">
   <div class="row">
@@ -35,19 +30,12 @@
       <% if @query %>
         <p>Vous avez cherché "<strong><%= @query %></strong>". Nous avons trouvé <%= @coders.count %> codeurs sur  <%= Coder.count %> sur notre site web.</p>
       <% else %>
-        <p>All <%= Coder.count %> coders.</p>
-         <%= link_to "all", coders_path %>
-         <div class="tag">
+        <p><%= Coder.count %> Codeurs trouvés.</p>
+        <p class="btn btn-outline-primary rounded-pill">
+            <%= link_to "Afficher tous les codeurs", coders_path %>
 
-  <% @coders.each do |r| %>
-  <p>
-    <% r.tag_list.each do |tag| %>
-      <%= link_to tag, coders_path(tag: tag) %>
-    <% end %>
-  </p>
-<% end %>
       <% end %>
-  </div>
+
     </div>
   </div>
   <div class="row">
