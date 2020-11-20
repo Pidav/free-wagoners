@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col">
       <br>
-      <h2>Bienvenue sur ton espace : <%= current_user.first_name %></h2>
+      <h2>Bienvenue sur ton espace <%= current_user.first_name %></h2>
       <hr>
 
    <!--    DASHBOARD  -->
@@ -73,8 +73,6 @@
         <div class="company">
           <br>
           <h3><%= link_to "Mes freelances favoris", "#" %></h3>
-          <br>
-          <h3><%= link_to "Mes factures", "#" %></h3>
           <br>
           <h3><%= link_to "Mes missions", "/missions_recruteur" %></h3>
         </div>
