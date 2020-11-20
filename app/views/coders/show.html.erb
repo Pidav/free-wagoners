@@ -1,60 +1,60 @@
-<br>
 <div class="back-bar">
-<%= link_to " << Retour aux résultats de recherche", _back_url, class: "btn btn-outline-danger rounded-pill"  %>
+<%= link_to " << Voir tous les codeurs", _back_url, class: "btn btn-outline-danger rounded-pill"  %>
 </div>
 
-<div class="bandeau-show">
-  <div class="coder-picture p-3 d-flex">
-    <% if @coder.photo.attached? %>
-      <%= cl_image_tag @coder.photo.key, width: 300, crop: :fill, gravity: :face, class: "avatar-big" %>
-    <% else %>
-      <%= image_tag "https://res.cloudinary.com/dnpdonlro/image/upload/v1605711897/qfp8ofi6fmh2nrgx88xr5cwi2jl9.jpg", height: 200, weight: 300, class: "profil-picture" %>
-    <% end %>
-  </div>
-  <div class="name-tags">
-    <h1 class="m-0"><%= @coder.name %></h1>
-    <br>
-    <div class="tag-show">
-      <span><% @coder.tag_list.each do |tag| %>
-          <div class="coder-tags"><%= tag %>
-            </div>
-            <% end %>
-      </span>
+<div class="container">
+  <div class="show-top-infos flex-between">
+    <div class="coder-picture p-3 d-flex">
+      <% if @coder.photo.attached? %>
+        <%= cl_image_tag @coder.photo.key, width: 300, crop: :fill, gravity: :face, class: "avatar-big" %>
+      <% else %>
+        <%= image_tag "https://res.cloudinary.com/dnpdonlro/image/upload/v1605711897/qfp8ofi6fmh2nrgx88xr5cwi2jl9.jpg", height: 200, weight: 300, class: "profil-picture" %>
+      <% end %>
     </div>
-    <br>
-    <span><%= @coder.email %></span>
+    <div class="name-tags">
+      <h1 class="m-0"><%= @coder.name %></h1>
+      <br>
+      <span><%= @coder.email %></span>
+    </div>
+    <div class="cta-show">
+      <% if current_user == @coder.user %>
+        <%= link_to "Editer mon profil", edit_coder_path(@coder), class: "btn btn-danger rounded-pill" %>
+      <% else %>
+          <%= link_to "Lui confier une mission", new_coder_mission_path(@coder), class: "btn btn-danger rounded-pill" %>
+      <% end %>
+    </div>
   </div>
-
-  <div class="cta-show">
-    <% if current_user == @coder.user %>
-      <%= link_to "Editer mon profil", edit_coder_path(@coder), class: "btn btn-danger rounded-pill" %>
-    <% else %>
-        <%= link_to "Lui confier une mission", new_coder_mission_path(@coder), class: "btn btn-danger rounded-pill" %>
-    <% end %>
+  <div class="show-stats">
+    <div class="coder-stats d-flex justify-content-between">
+      <div class="coder-stats-box d-flex justify-content-center align-items-center">
+        <span><%= @coder.price_per_day %> € / jour</span>
+      </div>
+      <% nb_missions_ok = @coder.missions.where(validated_mission: true).count %>
+      <div class="coder-stats-box d-flex justify-content-center align-items-center">
+        <% if nb_missions_ok == 0 %>
+          <span>Disponible pour vos missions</span>
+        <% elsif nb_missions_ok == 0 %>
+          <span>1 mission acceptée</span>
+        <% else %>
+          <span><%= nb_missions_ok %> missions acceptées</span>
+        <% end %>
+      </div>
+      <% if @coder.reviews.count > 0 %>
+        <div class="coder-stats-box d-flex justify-content-center align-items-center">
+          <span><%= (@coder.reviews.sum(:rating) / @coder.reviews.count.to_f).round(1)%> <i class="fas fa-star"></i></span>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <div class="container">
+
   <div class="row my-4">
-    <div class="col-lg-8 coder-top infos-box">
-      <div class="coder-stats p-3 d-flex justify-content-between">
-        <div class="coder-stats-box d-flex justify-content-center align-items-center">
-          <span><%= @coder.price_per_day %> € / jour</span>
-        </div>
-        <% nb_missions_ok = @coder.missions.where(validated_mission: true).count %>
-        <div class="coder-stats-box d-flex justify-content-center align-items-center">
-          <% if nb_missions_ok == 0 %>
-            <span>Disponible pour vos missions</span>
-          <% elsif nb_missions_ok == 0 %>
-            <span>1 mission acceptée</span>
-          <% else %>
-            <span><%= nb_missions_ok %> missions acceptées</span>
-          <% end %>
-        </div>
-        <% if @coder.reviews.count > 0 %>
-          <div class="coder-stats-box d-flex justify-content-center align-items-center">
-            <span><%= (@coder.reviews.sum(:rating) / @coder.reviews.count.to_f).round(1)%> <i class="fas fa-star"></i></span>
-          </div>
+    <div class="col-12">
+      <div class="show-tags d-flex">
+        <% @coder.tag_list.each do |tag| %>
+          <div class="coder-tags"><%= tag %></div>
         <% end %>
       </div>
     </div>
@@ -69,21 +69,24 @@
     </div>
   </div>
 
-  <div class="mes-missions">
-    <div class="row my-4">
-      <div class="col-offset-1 coder-missions-box">
-        <h3 class="m-4">Mes missions :</h3>
-        <ul class= "missions-list">
-          <% sorted_missions = @coder.missions.where(validated_mission: true).order(start_date: :desc) %>
-          <% sorted_missions.each do |mission| %>
-            <li>
-              <%= render partial: 'missions/mission_card', locals: {mission: mission} %>
-            </li>
-          <% end %>
-        </ul>
+  <% if nb_missions_ok > 0 %>
+    <div class="mes-missions">
+      <div class="row my-4">
+        <div class="col-offset-1 coder-missions-box">
+          <h3 class="m-4">Missions acceptées :</h3>
+          <ul class= "missions-list">
+            <% sorted_missions = @coder.missions.where(validated_mission: true).order(start_date: :desc) %>
+            <% sorted_missions.each do |mission| %>
+              <li>
+                <%= render partial: 'missions/mission_card', locals: {mission: mission} %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
+
 </div>
 
 
