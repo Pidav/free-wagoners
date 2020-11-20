@@ -1,5 +1,5 @@
 <br>
-<h2>Trouver votre expert parmi nos freelances!</h2>
+<h2>Trouver votre expert parmi nos freelances!!</h2>
 <%= simple_form_for :query, url: coders_path, method: :get do |f| %>
   <div class="row justify-content-center">
     <div class="search-form-control form-group">
@@ -8,11 +8,11 @@
           <i class="fas fa-search"></i>  Chercher
         </button>
         <div class="tag">
-          <% @coders.each do |r| %>
-            <% r.tag_list.each do |tag| %>
+
+            <% Coder::CODE_LIST.each do |tag| %>
               <%= link_to tag, coders_path(tag: tag) %>
             <% end %>
-          <% end %>
+
         </div>
     </div>
   </div>
@@ -30,9 +30,9 @@
       <% if @query %>
         <p>Vous avez cherché "<strong><%= @query %></strong>". Nous avons trouvé <%= @coders.count %> codeurs sur  <%= Coder.count %> sur notre site web.</p>
       <% else %>
-        <p>Nous avons trouvé <%= Coder.count %> coders selon vos critères.</p>
-         <%= link_to "all", coders_path %>
-         <div class="tag">
+        <p><%= Coder.count %> Codeurs trouvés.</p>
+        <p class="btn btn-outline-primary rounded-pill">
+            <%= link_to "Afficher tous les codeurs", coders_path %>
 
       <% end %>
 
