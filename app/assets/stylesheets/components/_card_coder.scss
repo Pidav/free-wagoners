@@ -49,10 +49,9 @@
 .coder-tags {
   display: flex;
   padding: 4px 8px;
-  background-color: $orange;
-  width: 30%;
-  margin-right: 4px;
+  background-color: $blue;
   border-radius: 50px;
+  margin-right: 0.5rem
 }
 
 .coder-card-actions {
@@ -72,3 +71,6 @@
   }
 }
 
+.description-coder, .show-tags {
+  padding: 0rem 2rem;
+}

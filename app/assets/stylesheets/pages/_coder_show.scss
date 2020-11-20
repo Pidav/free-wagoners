@@ -1,6 +1,20 @@
-.container {
-  width: 1200px;
-  margin: 0px auto;
+
+.show-top-infos {
+  background-color: white;
+  padding: 1rem 2rem;
+  height: 350px;
+}
+
+.show-stats {
+  position: relative;
+  height: 80px;
+}
+
+.coder-stats {
+  height: 100px;
+  position: absolute;
+  top: -35px;
+  left: 2rem;
 }
 
 .coder-stats-box {
@@ -11,8 +25,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // padding: 2rem;
-  margin-top: -100px;
+  padding: 2rem;
   font-size: 24px;
   color: white;
 }
@@ -51,14 +64,6 @@
   }
 }
 
-.bandeau-show {
-  background-color: white;
-  height: 300px;
-  width: 200vh;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
 
 .description-coder {
   padding-left: 33px;
