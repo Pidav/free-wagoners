@@ -43,6 +43,25 @@
         </div>
       </div>
 
+      <div class="dashboard-coder">
+        <div class="card-category" style="background-image: url(https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)">
+          Espace recruteur
+        </div>
+        <br>
+        <div class="company flex-vert-around">
+          <h3><%= link_to "Mes missions", "/missions_recruteur" %></h3>
+          <h3><%= link_to "Mes freelances favoris", "#" %></h3>
+        </div>
+        <hr>
+      </div>
+      <br>
+      <div class="row">
+        <% current_user.coders.each do |coder| %>
+          <div class="col-4">
+            <%= render partial: 'coders/coder_card', locals: {coder: coder} %>
+          </div>
+        <% end %>
+      </div>
 <!--       ESPACE RECRUTEUR / CODEUR  -->
 
       <div class="dashboard-coder">
@@ -50,49 +69,30 @@
           Espace codeur
         </div>
         <br>
-        <div class="coder">
+        <div class="coder flex-vert-around">
           <% if current_user.coders.count == 0 %>
             <%= link_to "Créer mon profil de codeur", new_user_coder_path(current_user)%>
           <% elsif current_user.coders.count == 1 %>
-          <br>
-          <h3><%= link_to "Editer mon profil de codeur", "#"%></h3>
-          <br>
-          <h3><%= link_to "Voir mes missions de codeur", missions_mes_codeurs_path%></h3>
-          <br>
-          <h3><%= link_to "Créer un autre profil de codeur", new_user_coder_path(current_user)%></h3>
+            <h3><%= link_to "Editer mon profil de codeur", "#"%></h3>
+            <h3><%= link_to "Voir mes missions de codeur", missions_mes_codeurs_path%></h3>
+            <h3><%= link_to "Créer un autre profil de codeur", new_user_coder_path(current_user)%></h3>
           <% else %>
-          <br>
-          <h3><%= link_to "Créer un profil de codeur", new_user_coder_path(current_user)%></h3>
-          <br>
-          <h3><%= link_to "Voir les missions de mes codeurs", missions_mes_codeurs_path%></h3>
-
-            <ul class="coders-list">
-              <% current_user.coders.each do |coder| %>
-                <li>
-                  <%= coder.name %>
-                  <%= link_to "Edit ce coder", edit_coder_path(coder) %>
-                </li>
-              <% end %>
-            </ul>
+            <h3><%= link_to "Créer un profil de codeur", new_user_coder_path(current_user)%></h3>
+            <h3><%= link_to "Voir les missions de mes codeurs", missions_mes_codeurs_path%></h3>
           <% end %>
         </div>
       </div>
       <br>
+      <div class="row">
+        <% current_user.coders.each do |coder| %>
+          <div class="col-4">
+            <%= render partial: 'coders/coder_card', locals: {coder: coder} %>
+          </div>
+        <% end %>
+      </div>
       <br>
  <!--        ESPACE RECRUTEUR  -->
-        <div class="dashboard-coder">
-        <div class="card-category" style="background-image: url(https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)">
-          Espace recruteur
-        </div>
-        <br>
-        <div class="company">
-          <br>
-          <h3><%= link_to "Mes freelances favoris", "#" %></h3>
-          <br>
-          <h3><%= link_to "Mes missions", "/missions_recruteur" %></h3>
-        </div>
-        <hr>
-      </div>
+
     </div>
   </div>
 </div>
