@@ -26,9 +26,9 @@
 
   <div class="cta-show">
     <% if current_user == @coder.user %>
-      <%= link_to "Editer mon profil", edit_coder_path(@coder), class: "btn btn-danger" %>
+      <%= link_to "Editer mon profil", edit_coder_path(@coder), class: "btn btn-danger rounded-pill" %>
     <% else %>
-        <%= link_to "Lui confier une mission", new_coder_mission_path(@coder), class: "btn btn-danger" %>
+        <%= link_to "Lui confier une mission", new_coder_mission_path(@coder), class: "btn btn-danger rounded-pill" %>
     <% end %>
   </div>
 </div>
