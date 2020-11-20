@@ -1,6 +1,9 @@
 
 .description {
-  background-color: #bbbbbb;
+  background-color: white;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 4px;
 }
 
 .mission {
@@ -8,10 +11,15 @@
   h2{
     color: #3F3D56;
   }
+  p{
+    margin-left: 160px;
+    margin-top: 30px;
+  }
 }
 
 .titre {
-  margin-top: 120px;
+  margin-top: 150px;
+  margin-left: 50px;
 }
 
 .wagon {
