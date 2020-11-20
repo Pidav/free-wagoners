@@ -17,7 +17,8 @@
       <div class="mission-infos-box flex-center">
         <span><small>Budget: </small><%= mission.total_price %> €</span>
       </div>
-      <div class="mission-infos-box flex-center">
+      <div class="mission-infos-box flex-between">
+        <div class="pr-3">
         <% if mission.validated_mission %>
           <span><small> Statut: </small>Validée</span>
         <% elsif mission.validated_mission.nil? %>
@@ -25,6 +26,11 @@
         <% else %>
           <span><small> Statut: </small>Refusée</span>
         <% end %>
+        </div>
+        <div>
+          <%= link_to "Accept", mission_accept_path(mission), class: "btn btn-primary" %>
+          <%= link_to "Reject", mission_reject_path(mission), class: "btn btn-danger" %>
+        </div>
       </div>
       <div class="mission-infos-box flex-between">
         <div class="flex-center pr-3">

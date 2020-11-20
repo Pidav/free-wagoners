@@ -12,10 +12,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :coders, only: [:index, :show, :edit, :update] do
     resources :missions, only: [:new, :create]
-
   end
   resources :missions, only: [:index, :edit, :update] do
     resources :reviews, only: [:new, :create]
   end
+  get 'missions/:id/accept', to: 'missions#accept', as: :mission_accept
+  get 'missions/:id/reject', to: 'missions#reject', as: :mission_reject
   resources :reviews, only: [:index]
 end

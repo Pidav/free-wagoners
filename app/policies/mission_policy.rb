@@ -14,6 +14,15 @@ class MissionPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.coder.user == user
   end
+
+  def accept?
+    update?
+  end
+
+  def reject?
+    update?
+  end
+
 end
