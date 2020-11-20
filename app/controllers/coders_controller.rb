@@ -10,6 +10,7 @@ class CodersController < ApplicationController
     else
       @coders = policy_scope(Coder.all)
     end
+    @coders = @coders.tagged_with(params[:tag]) if params[:tag].present?
   end
 
   def show
@@ -42,6 +43,13 @@ class CodersController < ApplicationController
     redirect_to coder_path(@coder)
   end
 
+def tagged
+  if params[:tag].present?
+    @coders = policy_scope(Coders.tagged_with(params[:tag]))
+  else
+  render :index
+  end
+end
 
   private
 

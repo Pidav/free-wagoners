@@ -9,12 +9,14 @@
     </button>
 
     <div class="tag">
-    <%= check_box_tag(:tag_1) %>
-    <%= label_tag(:tag_1, "Front") %>
-    <%= check_box_tag(:tag_2) %>
-    <%= label_tag(:tag_2, "Back") %>
-    <%= check_box_tag(:tag_2) %>
-    <%= label_tag(:tag_2, "Full stack") %>
+    <%= check_box_tag(:tag) %>
+    <%= label_tag(:tag, "Javascript") %>
+    <%= check_box_tag(:tag) %>
+    <%= label_tag(:tag, "HTML") %>
+    <%= check_box_tag(:tag) %>
+    <%= label_tag(:tag, "CSS") %>
+    <%= check_box_tag(:tag) %>
+    <%= label_tag(:tag, "ReactJS") %>
     <input type="range" id="volume" name="tarif" min="100" max="2000">
     <label for="tarif">Tarif / jour</label>
     </div>
@@ -34,7 +36,18 @@
         <p>Vous avez cherché "<strong><%= @query %></strong>". Nous avons trouvé <%= @coders.count %> codeurs sur  <%= Coder.count %> sur notre site web.</p>
       <% else %>
         <p>All <%= Coder.count %> coders.</p>
+         <%= link_to "all", coders_path %>
+         <div class="tag">
+
+  <% @coders.each do |r| %>
+  <p>
+    <% r.tag_list.each do |tag| %>
+      <%= link_to tag, coders_path(tag: tag) %>
+    <% end %>
+  </p>
+<% end %>
       <% end %>
+  </div>
     </div>
   </div>
   <div class="row">
