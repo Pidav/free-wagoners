@@ -56,7 +56,11 @@
       </div>
       <br>
       <div class="row">
-        <% current_user.coders.each do |coder| %>
+        <% mes_codeurs_en_mission = [] %>
+        <% current_user.missions.each do |mission| %>
+          <% mes_codeurs_en_mission << mission.coder %>
+        <% end %>
+        <% mes_codeurs_en_mission.uniq.each do |coder| %>
           <div class="col-4">
             <%= render partial: 'coders/coder_card', locals: {coder: coder} %>
           </div>
