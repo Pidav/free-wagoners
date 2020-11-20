@@ -1,11 +1,11 @@
-<h1 style="text-align: center">Les meilleurs talents du Wagon</h1>
+<br>
 <h2>Trouvez votre expert parmi nos freelances!</h2>
 <%= simple_form_for :query, url: coders_path, method: :get do |f| %>
   <div class="row justify-content-center">
   <div class="search-form-control form-group">
     <input class="form-control string required" placeholder="Essayez 'React.js','java', 'Steve Jobs'..." type="text" name="query" id="query" value="<%= params[:query] %>"/>
-    <button name="button" type="submit" class="btn btn-danger">
-      <i class="fas fa-search"></i>Search
+    <button name="button" type="submit" class="rounded-pill btn btn-danger">
+      <i class="fas fa-search"></i>  Chercher
     </button>
 
     <div class="tag">

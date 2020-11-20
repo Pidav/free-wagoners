@@ -1,23 +1,30 @@
+
+<div class="back-bar">
+  <%= link_to " << Revenir au dashboard", _back_url, class: "btn btn-outline-danger rounded-pill" %>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col">
-
+      <hr>
       <h2>Bienvenue sur ton espace recruteur : <%= current_user.email %></h2>
       <hr>
        <div class="card-category" style="background-image: url(https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)">
         Espace recruteur
       </div>
       <br>
+      <div class="mission-espace">
        <div class="row my-4">
-        <div class="col-lg-10 col-offset-1 coder-missions-box">
-          <h3 class="m-4">Mes missions données :</h3>
-          <ul class= "missions-list">
-            <% current_user.missions.each do |mission| %>
-              <li>
-                <%= render partial: 'missions/mission_card', locals: {mission: mission} %>
-              </li>
-            <% end %>
-          </ul>
+          <div class="col-lg-10 col-offset-1 coder-missions-box">
+            <h3 class="m-4">Mes missions données :</h3>
+            <ul class= "missions-list">
+              <% current_user.missions.each do |mission| %>
+                <li>
+                  <%= render partial: 'missions/mission_card', locals: {mission: mission} %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
