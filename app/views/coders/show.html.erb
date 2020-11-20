@@ -5,7 +5,7 @@
 <div class="bandeau-show">
   <div class="coder-picture p-3 d-flex">
     <% if @coder.photo.attached? %>
-      <%= cl_image_tag @coder.photo.key , height: 200, weight: 300, class: "profil-picture" %>
+      <%= cl_image_tag @coder.photo.key, width: 300, crop: :fill, gravity: :face, class: "avatar-big" %>
     <% else %>
       <%= image_tag "https://res.cloudinary.com/dnpdonlro/image/upload/v1605711897/qfp8ofi6fmh2nrgx88xr5cwi2jl9.jpg", height: 200, weight: 300, class: "profil-picture" %>
     <% end %>

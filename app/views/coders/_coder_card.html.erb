@@ -8,7 +8,7 @@
     </div>
   <% end %>
   <% if coder.photo.attached? %>
-    <div class="coder-card-image" style="background-image: url('<%= cl_image_path coder.photo.key, height: 300, width: 400, crop: :fill %>')"></div>
+    <div class="coder-card-image" style="background-image: url('<%= cl_image_path coder.photo.key, height: 300, width: 400, crop: :fill, gravity: :face %>')"></div>
   <% else %>
     <div class="coder-card-image" style="background-image: url(https://res.cloudinary.com/dnpdonlro/image/upload/v1605711952/committed_to_excellence-8c514667b11ec04b4172d45d04718e4968c6a518875df69fa7faad1fc956a4e9_hvctwi.jpg)"></div>
   <% end %>

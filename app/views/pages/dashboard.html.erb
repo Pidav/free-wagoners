@@ -10,7 +10,7 @@
       <div class="dash">
         <div class="compte">
           <br>
-          <span><%= cl_image_tag current_user.photo.key , height: 70, weight: 70 %></span>
+          <span><%= cl_image_tag current_user.photo.key , height: 70, weight: 70, class: "avatar-bordered" %></span>
           <%= current_user.first_name %> <%= current_user.last_name %>
           <br>
           <br>
@@ -21,10 +21,25 @@
         <div class="board">
           <br>
           <h3>Mes statistiques :</h3>
-          <p> Missions données (nombre) : <%= current_user.missions.count %></p>
-          <p> Missions données (euros) : <%= current_user.missions.sum(:total_price) %> €</p>
-          <p> Missions données (nombre) : <%= current_user.missions.count %></p>
-          <p> Missions données (euros) : <%= current_user.missions.sum(:total_price) %> €</p>
+          <div class="d-flex">
+            <div class="px-2">
+              <p> Missions données (nombre) : <%= current_user.missions.count %></p>
+              <p> Missions données (euros) : <%= current_user.missions.sum(:total_price) %> €</p>
+            </div>
+            <div class="px-2">
+              <% number_accepted_missions = 0 %>
+              <% number_pending_missions = 0 %>
+              <% amount_accepted_missions = 0 %>
+              <% current_user.coders.each do |coder|  %>
+                <% number_accepted_missions += coder.missions.where(validated_mission: true).count %>
+                <% number_accepted_missions += coder.missions.where(validated_mission: nil).count %>
+                <% amount_accepted_missions += coder.missions.where(validated_mission: true).sum(:total_price) %>
+              <% end %>
+              <p> Missions en attente (nombre) : <%= number_pending_missions %></p>
+              <p> Missions acceptées (nombre) : <%= number_accepted_missions %></p>
+              <p> Missions acceptées (euros) : <%= amount_accepted_missions %> €</p>
+            </div>
+          </div>
         </div>
       </div>
 
