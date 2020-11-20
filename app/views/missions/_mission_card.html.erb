@@ -28,8 +28,8 @@
         <% end %>
         </div>
         <div>
-          <%= link_to "Accept", mission_accept_path(mission), class: "btn btn-primary" %>
-          <%= link_to "Reject", mission_reject_path(mission), class: "btn btn-danger" %>
+          <%= link_to "Accepter", mission_accept_path(mission), class: "btn btn-primary" %>
+          <%= link_to "Refuser", mission_reject_path(mission), class: "btn btn-danger" %>
         </div>
       </div>
       <div class="mission-infos-box flex-between">
@@ -104,7 +104,13 @@
     <hr class="m-1">
     <div class="missions-review-infos">
       <div class="stars-review">
-        <span><%= mission.reviews.first.rating %><i class="far fa-star"></i></span>
+        <span class="">
+          <% counter = 0 %>
+          <% 5.times do %>
+            <i class="<%= mission.reviews.first.rating > counter ? 'fas fa-star' : 'far fa-star' %>"></i>
+            <% counter += 1 %>
+          <% end %>
+        </span>
       </div>
       <div>
         <p><em>"<%= mission.reviews.first.content %>"</em></p>

@@ -48,12 +48,12 @@
           <% elsif nb_missions_ok == 0 %>
             <span>1 mission acceptée</span>
           <% else %>
-            <span><%= nb_missions_ok %> mission(s) acceptée(s)</span>
+            <span><%= nb_missions_ok %> missions acceptées</span>
           <% end %>
         </div>
         <% if @coder.reviews.count > 0 %>
           <div class="coder-stats-box d-flex justify-content-center align-items-center">
-            <span><%= (@coder.reviews.sum(:rating) / @coder.reviews.count.to_f).round(1)%> <i class="far fa-star"></i></span>
+            <span><%= (@coder.reviews.sum(:rating) / @coder.reviews.count.to_f).round(1)%> <i class="fas fa-star"></i></span>
           </div>
         <% end %>
       </div>
