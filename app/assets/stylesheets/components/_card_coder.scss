@@ -46,8 +46,10 @@
   }
 }
 .coder-tags {
+  display: flex;
   padding: 4px 8px;
   background-color: $orange;
+  width: 30%;
   margin-right: 4px;
   border-radius: 50px;
 }
