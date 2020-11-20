@@ -19,7 +19,7 @@ class MissionsController < ApplicationController
     duration = @mission.end_date - @mission.start_date
     @mission.total_price = duration * @coder.price_per_day
     @mission.user = current_user
-    @mission.validated_mission = true
+    # @mission.validated_mission = true
     authorize @mission
     if @mission.save
       redirect_to "/missions_recruteur"
