@@ -1,9 +1,9 @@
 <br>
-<h2>Trouvez votre expert parmi nos freelances!</h2>
+<h2>Trouver votre expert parmi nos freelances!</h2>
 <%= simple_form_for :query, url: coders_path, method: :get do |f| %>
   <div class="row justify-content-center">
   <div class="search-form-control form-group">
-    <input class="form-control string required" placeholder="Essayez 'React.js','java', 'Steve Jobs'..." type="text" name="query" id="query" value="<%= params[:query] %>"/>
+    <input class="form-control string required" placeholder="Essayer 'React.js','java', 'Steve Jobs'..." type="text" name="query" id="query" value="<%= params[:query] %>"/>
     <button name="button" type="submit" class="rounded-pill btn btn-danger">
       <i class="fas fa-search"></i>  Chercher
     </button>
@@ -35,7 +35,7 @@
       <% if @query %>
         <p>Vous avez cherché "<strong><%= @query %></strong>". Nous avons trouvé <%= @coders.count %> codeurs sur  <%= Coder.count %> sur notre site web.</p>
       <% else %>
-        <p>All <%= Coder.count %> coders.</p>
+        <p>Nous avons trouvé <%= Coder.count %> coders selon vos critères.</p>
          <%= link_to "all", coders_path %>
          <div class="tag">
 
