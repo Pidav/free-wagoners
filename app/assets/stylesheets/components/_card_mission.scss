@@ -4,9 +4,40 @@
   margin: 1rem 1rem;
 }
 
-.mission-top {
+.missions-confidentials-box {
   display: flex;
   justify-content: space-between;
+}
+
+.mission-infos-box {
+  border-right: 1px solid $light-gray;
+  padding: 0.5rem 1rem 0 0.5rem;
+  text-align: left;
+}
+
+.missions-review-infos {
+  display: flex;
+  align-items: center;
+  padding-top: 0.5rem;
+  p {
+    margin: 0;
+  }
+}
+
+.stars-review {
+  color: $yellow;
+  padding-right: 3px;;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 

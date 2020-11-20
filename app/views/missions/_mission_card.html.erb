@@ -1,42 +1,92 @@
 <div class="mission-card">
-  <div class="mission-top">
-    <h4><%= mission.title %></h4>
+  <div class="mission-top flex-between">
+    <h5><%= mission.title %></h5>
     <span><i class="far fa-calendar-alt mr-2"></i>du <%= mission.start_date %> au <%= mission.end_date %></span>
   </div>
   <hr class="m-1">
   <div class="mission-long-desc mt-2">
     <p><%= mission.description %></p>
   </div>
+
   <% if mission.coder.user == current_user %>
     <hr class="m-1">
-    <div id="missions-confidentials-coder-infos">
-      <span><%= mission.total_price %> € - </span>
-      <% if mission.validated_mission %>
-        <span>Mission validée - </span>
-      <% else %>
-        <span>Mission en attente de validation - </span>
-      <% end %>
-      <span>donnée par <%= mission.user.first_name %> <%= mission.user.last_name %>
-        from <%= mission.user.company_name %>
-      </span>
+    <div id="missions-confidentials-coder-infos" class="missions-confidentials-box">
+      <div class="mission-infos-box flex-center pl-0">
+        <span>Détails mission </span>
+      </div>
+      <div class="mission-infos-box flex-center">
+        <span><small>Budget: </small><%= mission.total_price %> €</span>
+      </div>
+      <div class="mission-infos-box flex-center">
+        <% if mission.validated_mission %>
+          <span><small> Statut: </small>Validée</span>
+        <% elsif mission.validated_mission.nil? %>
+          <span><small> Statut: </small>En attente</span>
+        <% else %>
+          <span><small> Statut: </small>Refusée</span>
+        <% end %>
+      </div>
+      <div class="mission-infos-box flex-between">
+        <div class="flex-center pr-3">
+          <% if mission.user.photo.attached? %>
+            <%= cl_image_tag mission.user.photo.key , height: 40, weight: 40,
+            class: "avatar-bordered dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= image_tag "https://res.cloudinary.com/dnpdonlro/image/upload/v1605793441/unknown_user_smsl6v.jpg", height: 40, weight: 40,
+            class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+        </div>
+        <div>
+          <span><small> Recruteur: </small><%= mission.user.first_name %> <%= mission.user.last_name %></span>
+          <br>
+          <% if !mission.user.company_name.blank? %>
+          <span><small> Société: </small><%= mission.user.company_name %></span>
+          <% end %>
+        </div>
+      </div>
     </div>
   <% end %>
+
+
   <% if mission.user == current_user %>
     <hr class="m-1">
-    <div id="missions-confidentials-coder-infos">
-      <span><%= mission.total_price %> € - </span>
-      <% if mission.validated_mission %>
-        <span>Mission validée par le coder- </span>
-      <% else %>
-        <span>Mission en attente de validation - </span>
-      <% end %>
-      <span> donnée à </span>
-      <%= link_to coder_path(mission.coder) do %>
-        <%= mission.coder.name %>
-      <% end %>
-      <span> le <%= mission.coder.created_at %></span>
+    <div id="missions-confidentials-recruiter-infos" class="missions-confidentials-box">
+      <div class="mission-infos-box flex-center pl-0">
+        <span>Détails mission </span>
+      </div>
+      <div class="mission-infos-box flex-center">
+        <span><small>Budget: </small><%= mission.total_price %> €</span>
+      </div>
+      <div class="mission-infos-box flex-center">
+        <% if mission.validated_mission %>
+          <span><small> Statut: </small>Validée</span>
+        <% elsif mission.validated_mission.nil? %>
+          <span><small> Statut: </small>En attente</span>
+        <% else %>
+          <span><small> Statut: </small>Refusée</span>
+        <% end %>
+      </div>
+      <div class="mission-infos-box flex-between">
+        <div class="flex-center pr-3">
+          <% if mission.coder.photo.attached? %>
+            <%= cl_image_tag mission.coder.photo.key , height: 40, weight: 40,
+            class: "avatar-bordered dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+            <%= image_tag "https://res.cloudinary.com/dnpdonlro/image/upload/v1605793441/unknown_user_smsl6v.jpg", height: 40, weight: 40,
+            class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
+        </div>
+        <div>
+          <span><small> Codeur: </small>
+            <%= link_to coder_path(mission.coder) do %>
+              <%= mission.coder.name %>
+            <% end %>
+          </span>
+        </div>
+      </div>
     </div>
   <% end %>
+
   <% if mission.reviews.count == 0 %>
     <% if mission.user == current_user %>
       <hr class="m-1">
@@ -46,9 +96,13 @@
     <% end %>
   <% else %>
     <hr class="m-1">
-    <div id="missions-review-infos">
-      <p> <%= mission.reviews.first.rating  %> étoiles </p>
-      <p><%= mission.reviews.first.content  %></p>
+    <div class="missions-review-infos">
+      <div class="stars-review">
+        <span><%= mission.reviews.first.rating %><i class="far fa-star"></i></span>
+      </div>
+      <div>
+        <p><em>"<%= mission.reviews.first.content %>"</em></p>
+      </div>
     </div>
   <% end %>
 </div>
